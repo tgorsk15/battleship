@@ -1,3 +1,5 @@
+import { testFunc } from "./test";
+
 console.log("Why are we still here?");
 console.log("Yes");
 
@@ -8,3 +10,5 @@ function templateStarter() {
 function newList() {
   console.log("yay");
 }
+
+testFunc()
