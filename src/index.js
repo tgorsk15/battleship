@@ -1,4 +1,4 @@
-import { testFunc } from "./test";
+// import { testFunc } from "./test";
 
 console.log("Why are we still here?");
 console.log("Yes");
@@ -11,4 +11,3 @@ function newList() {
   console.log("yay");
 }
 
-testFunc()
