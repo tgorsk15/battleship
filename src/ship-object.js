@@ -9,12 +9,25 @@ export class Ship {
 
     hit() {
         this.hits += 1
+        console.log('hit added')
     }
 
     checkIfSunk() {
         if (this.length === this.hits) {
             console.log('Sunk!')
+        } else {
+            console.log(this.length);
+            console.log(this.hits);
         }
+    }
+
+}
+
+
+export function shipController() {
+
+    function shipAttacked() {
+
     }
 
 }

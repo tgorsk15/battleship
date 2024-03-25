@@ -39,3 +39,6 @@ test('place ship that is vertical', () => {
 test('check if attack is a hit or miss', () => {
     expect(boardRun.recieveAttack([5, 6])).toBe('hit')
 })
+test('check if attack is a hit or miss', () => {
+    expect(boardRun.recieveAttack([3, 8])).toBe('miss')
+})

@@ -13,10 +13,11 @@
 // placing ships vertically... possible idea: have a column number (e.g 3)
 // that you use to select the corresponding array item in each
 // of the arrays that represents a row on the board
-import { Ship } from "./ship-object"
+import { Ship, shipController } from "./ship-object"
 
 
 export function gameBoardController() {
+    const shipControlRun = shipController();
     // const alphabet = ['a','b','c','d','e','f','g','h','i','j']
     const board = [];
     const ships = [];
@@ -77,6 +78,8 @@ export function gameBoardController() {
                 if (coord[0] === coords[0] && coord[1] === coords[1]) {
                     console.log('hit');
                     attackStatus = 'hit'
+                    ships[i].hit()
+                    ships[i].checkIfSunk()
                     return false
                 }
             })
