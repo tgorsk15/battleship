@@ -55,10 +55,6 @@ export function gameBoardController() {
     }
 
     function placeVerticalShip(row, col, size) {
-        // maybe make a separate function that determines the END POINT of
-        // the ship, given the starting row and column positions
-        // as the length ... or maybe keep it in house here since 
-        // horizontal is idfferent from vertical
         const ship = new Ship(size);
 
         for (let i = 0; i < size; i++) {
@@ -79,16 +75,31 @@ export function gameBoardController() {
                     console.log('hit');
                     attackStatus = 'hit'
                     ships[i].hit()
-                    ships[i].checkIfSunk()
+
+                    const sunkCheck = ships[i].checkIfSunk()
+                    if (sunkCheck) {
+                        ships.splice(i, 1);
+                        console.log(ships);
+                        checkAllSunk()
+                    }
                     return false
                 }
             })
         }
+
+        if (attackStatus === 'miss') {
+
+        }
         return attackStatus
+    }
+
+    function checkAllSunk() {
+        console.log('ahoy mateys')
     }
 
 
 
-    return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack }
+    return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
+    checkAllSunk }
 }
 

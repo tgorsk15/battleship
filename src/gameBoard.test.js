@@ -6,13 +6,7 @@ beforeAll(() => {
     boardRun = gameBoardController()
 });
 
-// test('run a test function', () => {
-//     expect(boardRun.testFunc(3)).toBe(4)
-// })
 
-// test('create gameBoard', () => {
-//     expect(boardRun.createBoard()).toBe(3)
-// })
 
 test('place ship that is horizontal', () => {
     expect(boardRun.placeHorizontalShip(2, 3, 3)).toEqual (
@@ -34,7 +28,19 @@ test('place ship that is vertical', () => {
             coords: [[5, 6], [6, 6], [7, 6], [8, 6] ]
         }
     )
-}) 
+})
+
+test('test if Sunk trigger works', () => {
+    expect(boardRun.placeVerticalShip(7, 8, 1)).toEqual (
+        {
+            length: 1,
+            hits: 0,
+            isSunk: false,
+            coords: [[7, 8]]
+        }
+    )
+})
+
 
 test('check if attack is a hit or miss', () => {
     expect(boardRun.recieveAttack([5, 6])).toBe('hit')
@@ -42,3 +48,7 @@ test('check if attack is a hit or miss', () => {
 test('check if attack is a hit or miss', () => {
     expect(boardRun.recieveAttack([3, 8])).toBe('miss')
 })
+
+test('check if ship is sunk', () => {
+    expect(boardRun.recieveAttack([7, 8])).toBe('hit')
+})  // should console.log Sunk! and remove from ships array

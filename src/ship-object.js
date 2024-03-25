@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable import/prefer-default-export */
 export class Ship {
     constructor(length, hits, isSunk, coords) {
@@ -15,9 +16,11 @@ export class Ship {
     checkIfSunk() {
         if (this.length === this.hits) {
             console.log('Sunk!')
+            return true
         } else {
             console.log(this.length);
             console.log(this.hits);
+            return false
         }
     }
 
@@ -26,8 +29,10 @@ export class Ship {
 
 export function shipController() {
 
-    function shipAttacked() {
+    // function shipSunk(ship) {
+    //     console.log('ahoy mateys');
+    // }
 
-    }
+    // return { shipSunk }
 
 }
