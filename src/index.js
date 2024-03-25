@@ -1,13 +1,5 @@
-// import { testFunc } from "./test";
+import { gameBoardController } from "./gameboardController";
 
-console.log("Why are we still here?");
-console.log("Yes");
+const consoleTest = gameBoardController();
 
-function templateStarter() {
-  console.log("is Prettier working?");
-}
-
-function newList() {
-  console.log("yay");
-}
-
+consoleTest.createBoard()
