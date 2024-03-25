@@ -8,6 +8,17 @@ beforeAll(() => {
 
 
 
+test('test if Sunk trigger works', () => {
+    expect(boardRun.placeVerticalShip(7, 8, 1)).toEqual (
+        {
+            length: 1,
+            hits: 0,
+            isSunk: false,
+            coords: [[7, 8]]
+        }
+    )
+})
+
 test('place ship that is horizontal', () => {
     expect(boardRun.placeHorizontalShip(2, 3, 3)).toEqual (
         {
@@ -30,16 +41,7 @@ test('place ship that is vertical', () => {
     )
 })
 
-test('test if Sunk trigger works', () => {
-    expect(boardRun.placeVerticalShip(7, 8, 1)).toEqual (
-        {
-            length: 1,
-            hits: 0,
-            isSunk: false,
-            coords: [[7, 8]]
-        }
-    )
-})
+
 
 
 test('check if attack is a hit or miss', () => {

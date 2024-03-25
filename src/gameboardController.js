@@ -4,11 +4,9 @@
 
 // need to create a board that is 10 x 10 ... board controller should get
 // run twice to create eachplayer's board
-// should board be a graph??
 
 // gameBoard should check if a game is over by seeing if the
-// total amount of 'hits' or 'trues' equals the total length
-// of ships that are on the board
+// length of "ships" is zero
 
 // placing ships vertically... possible idea: have a column number (e.g 3)
 // that you use to select the corresponding array item in each
@@ -50,7 +48,6 @@ export function gameBoardController() {
         }
         ships.push(ship);
         console.log(ships);
-        console.log(ship)
         return ship
     }
 
@@ -63,7 +60,6 @@ export function gameBoardController() {
         }
         ships.push(ship);
         console.log(ships);
-        console.log(ship)
         return ship
     }
     
@@ -88,7 +84,7 @@ export function gameBoardController() {
         }
 
         if (attackStatus === 'miss') {
-
+            renderBoardSpot(coords);
         }
         return attackStatus
     }
@@ -97,9 +93,13 @@ export function gameBoardController() {
         console.log('ahoy mateys')
     }
 
+    function renderBoardSpot(coords) {
+
+    }
+
 
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
-    checkAllSunk }
+    checkAllSunk, renderBoardSpot }
 }
 
