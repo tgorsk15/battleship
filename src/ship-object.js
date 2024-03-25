@@ -1,8 +1,10 @@
-class Ship {
-    constructor(length, hits, isSunk) {
+/* eslint-disable import/prefer-default-export */
+export class Ship {
+    constructor(length, hits, isSunk, coords) {
         this.length = length;
-        this.hits = hits;
-        this.isSunk = isSunk;
+        this.hits = 0;
+        this.isSunk = false;
+        this.coords = []
     }
 
     hit() {
