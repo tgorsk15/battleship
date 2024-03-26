@@ -7,15 +7,15 @@
 // carrier, etc...)
 // this arry can be iterated through, nd create all the necessary ships
 
-export const userPlayer = function() {
+export const userPlayer = function () {
 
 }
 
-export const computerPlayer = function() {
+export const computerPlayer = function () {
 
     function pickRandomCell() {
-        const row = Math.floor(Math.random() * 11)
-        const column = Math.floor(Math.random() * 11)
+        const row = Math.floor(Math.random() * 10) + 1
+        const column = Math.floor(Math.random() * 10) + 1
         console.log(row)
         console.log(column)
         return { row, column }
