@@ -28,7 +28,7 @@ export function gameBoardController() {
                 board[i][j] = false
             }
         }
-        console.log(board);
+        // console.log(board);
         return board
     }
 
@@ -83,9 +83,7 @@ export function gameBoardController() {
             })
         }
 
-        if (attackStatus === 'miss') {
-            renderBoardSpot(coords);
-        }
+        updateBoardSpot(coords);
         return attackStatus
     }
 
@@ -93,13 +91,17 @@ export function gameBoardController() {
         console.log('ahoy mateys')
     }
 
-    function renderBoardSpot(coords) {
-
+    function updateBoardSpot(coords) {
+        console.log(coords[0])
+        console.log(board)
+        board[coords[0] - 1][coords[1] - 1] = true;
+        console.log(board)
+        return board
     }
 
 
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
-    checkAllSunk, renderBoardSpot }
+    checkAllSunk, updateBoardSpot }
 }
 

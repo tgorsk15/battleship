@@ -4,6 +4,7 @@ let boardRun;
 
 beforeAll(() => {
     boardRun = gameBoardController()
+    boardRun.createBoard()
 });
 
 
@@ -54,3 +55,25 @@ test('check if attack is a hit or miss', () => {
 test('check if ship is sunk', () => {
     expect(boardRun.recieveAttack([7, 8])).toBe('hit')
 })  // should console.log Sunk! and remove from ships array
+
+
+describe('making sure board updates when attack is recieved', () => {
+    // beforeEach(() => {
+    //     const board = boardRun.createBoard()
+    // });
+
+    test('check if board update correctly', () => {
+        const board = boardRun.createBoard()
+        boardRun.updateBoardSpot([9, 9])
+        expect(board).toEqual([[false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, true, false], 
+            [false, false, false, false, false, false, false, false, false, false]])
+    })
+})
