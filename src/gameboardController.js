@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
@@ -75,7 +76,6 @@ export function gameBoardController() {
                     const sunkCheck = ships[i].checkIfSunk()
                     if (sunkCheck) {
                         ships.splice(i, 1);
-                        console.log(ships);
                         checkAllSunk()
                     }
                     return false
@@ -88,14 +88,18 @@ export function gameBoardController() {
     }
 
     function checkAllSunk() {
-        console.log('ahoy mateys')
+        console.log(ships)
+        if (ships.length === 0) {
+            console.log('player defeated');
+            return true
+        } else {
+            return false
+        }
     }
 
     function updateBoardSpot(coords) {
-        console.log(coords[0])
-        console.log(board)
         board[coords[0] - 1][coords[1] - 1] = true;
-        console.log(board)
+        // console.log(board)
         return board
     }
 

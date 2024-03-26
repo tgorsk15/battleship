@@ -57,6 +57,16 @@ test('check if ship is sunk', () => {
 })  // should console.log Sunk! and remove from ships array
 
 
+test('check if all sunk', () => {
+    expect(boardRun.checkAllSunk()).toBe(false)
+})
+// below test is for checking when ships length is 0
+// test.only('check if all sunk', () => {
+
+//     expect(boardRun.checkAllSunk()).toBe(true)
+// })
+
+
 describe('making sure board updates when attack is recieved', () => {
     // beforeEach(() => {
     //     const board = boardRun.createBoard()
