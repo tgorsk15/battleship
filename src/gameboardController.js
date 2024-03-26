@@ -34,13 +34,6 @@ export function gameBoardController() {
     }
 
     function placeHorizontalShip(row, col, size) {
-        // maybe make a separate function that determines the END POINT of
-        // the ship, given the starting row and column positions, as well
-        // as the length ... or maybe keep it in house here since 
-        // horizontal is dfferent from vertical
-
-        // need to store the memory of the ships coordinates somewhere,
-        // potentially in the Ship class
         const ship = new Ship(size);
 
         for (let i = 0; i < size; i++) {
