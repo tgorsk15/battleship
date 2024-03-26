@@ -19,6 +19,8 @@ export const computerPlayer = function () {
         console.log(row)
         console.log(column)
         return { row, column }
+        // need to implement a checker at some point to ensure
+        // that computer can't pick already used cells
     }
 
     return {pickRandomCell}

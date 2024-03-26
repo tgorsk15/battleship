@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-else-return */
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
@@ -7,7 +8,7 @@
 // run twice to create eachplayer's board
 
 // gameBoard should check if a game is over by seeing if the
-// length of "ships" is zero
+// length of "ships" is zero (checkAllSunk)
 
 // placing ships vertically... possible idea: have a column number (e.g 3)
 // that you use to select the corresponding array item in each
@@ -29,7 +30,7 @@ export function gameBoardController() {
                 board[i][j] = false
             }
         }
-        // console.log(board);
+        console.log(board);
         return board
     }
 
@@ -59,6 +60,12 @@ export function gameBoardController() {
     
     function recieveAttack(coords) {
         let attackStatus = 'miss';
+
+        // check to see if coords have already been used:
+        if (checkIfUsed(coords) === true) {
+            return 'filled already'
+        }
+
         for (let i = 0; i < ships.length; i++) {
             ships[i].coords.every(coord => {
                 if (coord[0] === coords[0] && coord[1] === coords[1]) {
@@ -75,7 +82,6 @@ export function gameBoardController() {
                 }
             })
         }
-
         updateBoardSpot(coords);
         return attackStatus
     }
@@ -96,9 +102,22 @@ export function gameBoardController() {
         return board
     }
 
+    function checkIfUsed(coords) {
+        console.log(board[coords[0] - 1][coords[1] - 1])
+        if (board[coords[0] - 1][coords[1] - 1] === true) {
+            console.log('already used')
+            return true
+        }
+        return false
+        
+    }
+
+    // likely will have to implement check to make sure a ship can
+    // be placed with no overlap
+
 
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
-    checkAllSunk, updateBoardSpot }
+    checkAllSunk, updateBoardSpot, checkIfUsed }
 }
 
