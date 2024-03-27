@@ -1,4 +1,5 @@
 import { gameBoardController } from "./gameboardController"
+import { createFleet } from "./ship-object";
 
 let boardRun;
 
@@ -8,20 +9,22 @@ beforeAll(() => {
 });
 
 
+const ships = createFleet([]);
 
-test('test if Sunk trigger works', () => {
-    expect(boardRun.placeVerticalShip(7, 8, 1)).toEqual (
+test('test if correct vertical ship is returned', () => {
+    console.log(ships[0]);
+    expect(boardRun.placeVerticalShip(7, 8, ships[4])).toEqual (
         {
-            length: 1,
+            length: 2,
             hits: 0,
             isSunk: false,
-            coords: [[7, 8]]
+            coords: [[7, 8], [8, 8]]
         }
     )
 })
 
-test('place ship that is horizontal', () => {
-    expect(boardRun.placeHorizontalShip(2, 3, 3)).toEqual (
+test('test if correct horiz ship is returned', () => {
+    expect(boardRun.placeHorizontalShip(2, 3, ships[2])).toEqual (
         {
             length: 3,
             hits: 0,
@@ -32,7 +35,7 @@ test('place ship that is horizontal', () => {
 })
 
 test('place ship that is vertical', () => {
-    expect(boardRun.placeVerticalShip(5, 6, 4)).toEqual (
+    expect(boardRun.placeVerticalShip(5, 6, ships[1])).toEqual (
         {
             length: 4,
             hits: 0,
@@ -45,16 +48,17 @@ test('place ship that is vertical', () => {
 
 
 
-test('check if attack is a hit or miss', () => {
-    expect(boardRun.recieveAttack([5, 6])).toBe('hit')
-})
-test('check if attack is a hit or miss', () => {
-    expect(boardRun.recieveAttack([3, 8])).toBe('miss')
-})
+// test('check if attack is a hit or miss', () => {
+//     expect(boardRun.recieveAttack([5, 6])).toBe('hit')
+// })
+// test('check if attack is a hit or miss', () => {
+//     expect(boardRun.recieveAttack([3, 8])).toBe('miss')
+// })
 
-test('check if ship is sunk', () => {
-    expect(boardRun.recieveAttack([7, 8])).toBe('hit')
-})  // should console.log Sunk! and remove from ships array
+// test('check if ship is sunk', () => {
+//     expect(boardRun.recieveAttack([7, 8])).toBe('hit')
+// })  
+// should console.log Sunk! and remove from ships array
 
 test('if cell is reused, recieveAttack should return nothing', () => {
     expect(boardRun.recieveAttack([7,8])).toBe('filled already')

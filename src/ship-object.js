@@ -27,8 +27,14 @@ export class Ship {
 }
 
 
-export function shipController() {
-
+export function createFleet(ships) {
+    const carrier = new Ship(5);
+    const battleship = new Ship(4);
+    const destroyer = new Ship(3);
+    const submarine = new Ship(3);
+    const patrolBoat = new Ship(2);
     
-
+    ships.push(carrier, battleship, destroyer, submarine, patrolBoat)
+    console.log(ships);
+    return ships
 }

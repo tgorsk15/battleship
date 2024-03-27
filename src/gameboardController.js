@@ -13,14 +13,17 @@
 // placing ships vertically... possible idea: have a column number (e.g 3)
 // that you use to select the corresponding array item in each
 // of the arrays that represents a row on the board
-import { Ship, shipController } from "./ship-object"
+import { Ship, createFleet } from "./ship-object"
 
 
 export function gameBoardController() {
-    const shipControlRun = shipController();
     // const alphabet = ['a','b','c','d','e','f','g','h','i','j']
     const board = [];
     const ships = [];
+
+    createFleet(ships);
+    // console.log(ships);
+
 
     function createBoard() {
         for (let i = 0; i < 10; i++) {
@@ -34,27 +37,25 @@ export function gameBoardController() {
         return board
     }
 
-    function placeHorizontalShip(row, col, size) {
-        const ship = new Ship(size);
+    function placeHorizontalShip(row, col, ship) {
+        // const ship = new Ship(size);
 
-        for (let i = 0; i < size; i++) {
+        for (let i = 0; i < ship.length; i++) {
             const newCoords = [row, col + i];
             ship.coords.push(newCoords)
         }
-        ships.push(ship);
-        console.log(ships);
+        // ships.push(ship);
         return ship
     }
 
-    function placeVerticalShip(row, col, size) {
-        const ship = new Ship(size);
+    function placeVerticalShip(row, col, ship) {
+        console.log(ship);
 
-        for (let i = 0; i < size; i++) {
+        for (let i = 0; i < ship.length; i++) {
             const newCoords = [row + i, col];
             ship.coords.push(newCoords);
         }
-        ships.push(ship);
-        console.log(ships);
+        // ships.push(ship);
         return ship
     }
     
@@ -114,7 +115,7 @@ export function gameBoardController() {
 
     // likely will have to implement check to make sure a ship can
     // be placed with no overlap
-
+    console.log('board exists');
 
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,

@@ -7,9 +7,9 @@
 // carrier, etc...)
 // this arry can be iterated through, nd create all the necessary ships
 export class Player {
-    constructor(player, playerShips, gameBoard ) {
+    constructor(player, gameBoard) {
         this.player = player;
-        this.playerShips = []
+        // this.playerShips = []
         this.gameBoard= null
     }
 }
