@@ -1,7 +1,7 @@
 import { gameBoardController } from "./gameboardController";
 
-const consoleTest = gameBoardController();
+// const consoleTest = gameBoardController();
 
-consoleTest.createBoard()
+// consoleTest.createBoard()
 
 console.log('yeppp')

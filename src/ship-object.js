@@ -29,10 +29,6 @@ export class Ship {
 
 export function shipController() {
 
-    // function shipSunk(ship) {
-    //     console.log('ahoy mateys');
-    // }
-
-    // return { shipSunk }
+    
 
 }
