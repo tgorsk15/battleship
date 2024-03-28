@@ -4,9 +4,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
 
-// need to create a board that is 10 x 10 ... board controller should get
-// run twice to create eachplayer's board
-
 // gameBoard should check if a game is over by seeing if the
 // length of "ships" is zero (checkAllSunk)
 
@@ -46,8 +43,6 @@ export function gameBoardController(fleet) {
     }
 
     function placeVerticalShip(row, col, ship) {
-        console.log(ship);
-
         for (let i = 0; i < ship.length; i++) {
             const newCoords = [row + i, col];
             // put a check here to see if this conflicts with

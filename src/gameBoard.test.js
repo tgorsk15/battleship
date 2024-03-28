@@ -66,15 +66,15 @@ test('check if attack is a miss', () => {
 })  
 
 
-// test('if cell is reused, recieveAttack should return nothing', () => {
-//     expect(boardRun.recieveAttack([7,8])).toBe('filled already')
-//     expect(boardRun.checkIfUsed([7,8])).toBe(true)
-// })
+test('if cell is reused, recieveAttack should return nothing', () => {
+    expect(boardRun.recieveAttack([7,5])).toBe('filled already')
+    expect(boardRun.checkIfUsed([7,5])).toBe(true)
+})
 
 
-// test('check if all sunk', () => {
-//     expect(boardRun.checkAllSunk()).toBe(false)
-// })
+test('check if all sunk', () => {
+    expect(boardRun.checkAllSunk()).toBe(false)
+})
 // below test is for checking when ships length is 0
 // test.only('check if all sunk', () => {
 
@@ -82,20 +82,20 @@ test('check if attack is a miss', () => {
 // })
 
 
-// describe('making sure board updates when attack is recieved', () => {
+describe('making sure board updates when attack is recieved', () => {
 
-//     test('check if board update correctly', () => {
-//         const board = boardRun.createBoard()
-//         boardRun.updateBoardSpot([9, 9])
-//         expect(board).toEqual([[false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, false, false], 
-//             [false, false, false, false, false, false, false, false, true, false], 
-//             [false, false, false, false, false, false, false, false, false, false]])
-//     })
-// })
+    test('check if board update correctly', () => {
+        const board = boardRun.createBoard()
+        boardRun.updateBoardSpot([9, 9])
+        expect(board).toEqual([[false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, false, false], 
+            [false, false, false, false, false, false, false, false, true, false], 
+            [false, false, false, false, false, false, false, false, false, false]])
+    })
+})
