@@ -22,7 +22,7 @@ export function gameBoardController() {
     const ships = [];
 
     createFleet(ships);
-    // console.log(ships);
+    console.log(ships);
 
 
     function createBoard() {
@@ -68,6 +68,7 @@ export function gameBoardController() {
         }
 
         for (let i = 0; i < ships.length; i++) {
+            console.log(ships)
             ships[i].coords.every(coord => {
                 if (coord[0] === coords[0] && coord[1] === coords[1]) {
                     console.log('hit');
