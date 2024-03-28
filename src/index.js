@@ -1,6 +1,6 @@
 import { gameBoardController } from "./gameboardController";
 import { initializeGame } from "./gameLoop";
-// const consoleTest = gameBoardController();
+// import './pageStyling.css';
 
 // consoleTest.createBoard()
 
