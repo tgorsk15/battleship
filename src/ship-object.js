@@ -1,5 +1,7 @@
 /* eslint-disable no-else-return */
 /* eslint-disable import/prefer-default-export */
+import { gameBoardController } from "./gameboardController";
+
 export class Ship {
     constructor(length, hits, isSunk, coords) {
         this.length = length;
@@ -26,14 +28,36 @@ export class Ship {
 
 }
 
+const boardRun = gameBoardController();
 
-export function createFleet(ships) {
+export function createFleet() {
+    const ships = []
     const carrier = new Ship(5);
     const battleship = new Ship(4);
     const destroyer = new Ship(3);
     const submarine = new Ship(3);
     const patrolBoat = new Ship(2);
+
     
+    ships.push(carrier, battleship, destroyer, submarine, patrolBoat)
+
+
+    boardRun.placeHorizontalShip(4, 3, carrier);
+    boardRun.placeVerticalShip(4,1, battleship)
+    boardRun.placeHorizontalShip(7, 4, destroyer);
+    boardRun.placeVerticalShip(7, 8, submarine)
+    boardRun.placeHorizontalShip(2, 6,patrolBoat)
+    console.log(ships);
+    return ships
+}
+
+export function createOppFleet(ships) {
+    const carrier = new Ship(5);
+    const battleship = new Ship(4);
+    const destroyer = new Ship(3);
+    const submarine = new Ship(3);
+    const patrolBoat = new Ship(2);
+
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat)
     console.log(ships);
     return ships

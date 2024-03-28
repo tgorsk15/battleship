@@ -16,12 +16,10 @@
 import { Ship, createFleet } from "./ship-object"
 
 
-export function gameBoardController() {
-    // const alphabet = ['a','b','c','d','e','f','g','h','i','j']
+export function gameBoardController(fleet) {
     const board = [];
-    const ships = [];
+    const ships = fleet;
 
-    createFleet(ships);
     console.log(ships);
 
 
@@ -38,13 +36,12 @@ export function gameBoardController() {
     }
 
     function placeHorizontalShip(row, col, ship) {
-        // const ship = new Ship(size);
-
         for (let i = 0; i < ship.length; i++) {
             const newCoords = [row, col + i];
+            // put a check here to see if this conflicts with
+            // any other ship's coords 
             ship.coords.push(newCoords)
         }
-        // ships.push(ship);
         return ship
     }
 
@@ -53,13 +50,15 @@ export function gameBoardController() {
 
         for (let i = 0; i < ship.length; i++) {
             const newCoords = [row + i, col];
+            // put a check here to see if this conflicts with
+            // any other ship's coords 
             ship.coords.push(newCoords);
         }
-        // ships.push(ship);
         return ship
     }
     
     function recieveAttack(coords) {
+        console.log(coords)
         let attackStatus = 'miss';
 
         // check to see if coords have already been used:
@@ -68,12 +67,18 @@ export function gameBoardController() {
         }
 
         for (let i = 0; i < ships.length; i++) {
-            console.log(ships)
-            ships[i].coords.every(coord => {
+            ships[i].coords.forEach((coord) => {
+                
+                if (checkIfUsed(coords) === true) {
+                    return 'filled already'
+                }
+
                 if (coord[0] === coords[0] && coord[1] === coords[1]) {
+                    console.log([coord[0], coord[1]])
                     console.log('hit');
                     attackStatus = 'hit'
-                    ships[i].hit()
+                    ships[i].hit();
+                    updateBoardSpot(coords);
 
                     const sunkCheck = ships[i].checkIfSunk()
                     if (sunkCheck) {
@@ -90,6 +95,7 @@ export function gameBoardController() {
 
     function checkAllSunk() {
         console.log(ships)
+        console.log(board)
         if (ships.length === 0) {
             console.log('player defeated');
             return true
@@ -105,7 +111,7 @@ export function gameBoardController() {
     }
 
     function checkIfUsed(coords) {
-        console.log(board[coords[0] - 1][coords[1] - 1])
+        // console.log(board[coords[0] - 1][coords[1] - 1])
         if (board[coords[0] - 1][coords[1] - 1] === true) {
             console.log('already used')
             return true
