@@ -10,7 +10,7 @@ export const domManipulation = function () {
     const playerBoards = document.querySelector('.gameboards');
 
 
-    function renderGameBoard(board, playerName) {
+    function renderGameBoard(boardController, playerName) {
         let isComputer = false;
         if (playerName === 'Player 2') {
             isComputer = true
@@ -30,10 +30,11 @@ export const domManipulation = function () {
 
         buildGrid(gameboard, isComputer);
         
-
-        if (isComputer === true) {
-            setGridTriggers()
+        if (isComputer === false) {
+            console.log('triggered')
+            setGridTriggers(boardController)
         }
+        
 
     }
 
@@ -57,11 +58,14 @@ export const domManipulation = function () {
 
     }
 
-    function setGridTriggers() {
+    function setGridTriggers(computerBoardController) {
         const cells = document.querySelectorAll('.cell-c');
+        console.log(cells);
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
-                console.log(cell.coordinates)
+                console.log(cell.coordinates);
+                console.log(computerBoardController);
+                computerBoardController.recieveAttack(cell.coordinates);
                 // need to trigger recieveAttack on the correct
                 // game board (need to get back to initialize game
                 // to do this!)
