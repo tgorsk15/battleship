@@ -29,9 +29,8 @@ export const domManipulation = function () {
         appendElement(gameboard, 'gameboard', gameBoardWrapper);
 
         buildGrid(gameboard, isComputer);
-        console.log('grid built');
-
         
+
         if (isComputer === true) {
             setGridTriggers()
         }
@@ -60,7 +59,17 @@ export const domManipulation = function () {
 
     function setGridTriggers() {
         const cells = document.querySelectorAll('.cell-c');
-        console.log(cells)
+        cells.forEach((cell) => {
+            cell.addEventListener('click', () => {
+                console.log(cell.coordinates)
+                // need to trigger recieveAttack on the correct
+                // game board (need to get back to initialize game
+                // to do this!)
+                // need to trigger computer's attack in response
+                // need to give feedback on each gameboard
+            })
+        })
+            
     }
 
     function disableGrid() {

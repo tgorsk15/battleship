@@ -80,6 +80,6 @@ body {
     border: 1px solid black;
 }
 
-.cell:hover {
+.cell:hover, .cell-c:hover {
     background-color: antiquewhite;
 }
