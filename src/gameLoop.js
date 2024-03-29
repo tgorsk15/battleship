@@ -12,6 +12,7 @@ export const initializeGame = function createGame() {
     humanPlayer.gameBoard = gameBoardController(humanFleet);
     const humanBoard = humanPlayer.gameBoard
     runDOM.renderGameBoard(humanBoard.createBoard(), humanPlayer.player);
+    
 
 
     const AIplayer = new Player('Player 2');

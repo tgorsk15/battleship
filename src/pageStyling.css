@@ -50,7 +50,6 @@ body {
 
 .gameboard {
     display: flex;
-    /* justify-content: flex-end; */
     flex-direction: column;
     height: 400px;
     width: 400px;
@@ -66,6 +65,14 @@ body {
 }
 
 .cell {
+    width: 100%;
+    margin: 0px;
+    aspect-ratio: 1;
+    background-color: rgb(221, 241, 241);
+    border: 1px solid black;
+}
+
+.cell-c {
     width: 100%;
     margin: 0px;
     aspect-ratio: 1;
