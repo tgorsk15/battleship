@@ -14,7 +14,7 @@ body {
 
 .game-container {
     display: grid;
-    grid-template-rows: 1fr 4fr 2fr;
+    grid-template-rows: 1fr 4fr 1.7fr;
     height: 100vh;
     width: 100vw;
     background-color: rgb(59, 59, 59);
@@ -35,3 +35,34 @@ body {
     display: flex;
     grid-row: 3 / 4;
 }
+
+/* gameboard wrapper styling */
+.board-wrapper {
+    height: 100%;
+    width: 400px;
+    background-color: bisque;
+}
+
+.board-title {
+
+}
+
+.gameboard {
+    height: 400px;
+    width: 400px;
+    background-color: blueviolet;
+}
+
+/* .row {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: pink;
+}
+
+.cell {
+    width: 100%;
+    margin: 0px;
+    aspect-ratio: 1;
+    background-color: azure;
+} */
