@@ -27,6 +27,7 @@ body {
 
 .gameboards {
     display: flex;
+    justify-content: space-around;
     grid-row: 2 / 3;
     background-color: rgb(114, 155, 155);
 }
@@ -48,14 +49,18 @@ body {
 }
 
 .gameboard {
+    display: flex;
+    /* justify-content: flex-end; */
+    flex-direction: column;
     height: 400px;
     width: 400px;
     background-color: blueviolet;
 }
 
-/* .row {
+.row {
     display: flex;
-    height: 100%;
+    /* flex-direction: column; */
+    height: 10%;
     width: 100%;
     background-color: pink;
 }
@@ -64,5 +69,10 @@ body {
     width: 100%;
     margin: 0px;
     aspect-ratio: 1;
-    background-color: azure;
-} */
+    background-color: rgb(221, 241, 241);
+    border: 1px solid black;
+}
+
+.cell:hover {
+    background-color: antiquewhite;
+}

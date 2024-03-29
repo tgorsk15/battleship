@@ -19,7 +19,7 @@ export const initializeGame = function createGame() {
     AIplayer.gameBoard = gameBoardController(computerFleet);
     const computerBoard = AIplayer.gameBoard;
     computerBoard.createBoard();
-    // render gameBoard here
+    runDOM.renderGameBoard(computerBoard.createBoard(), AIplayer.player);
 
     // call render dialogue box here
 }
