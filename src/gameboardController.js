@@ -110,7 +110,6 @@ export function gameBoardController(fleet, name) {
     }
 
     function checkIfUsed(coords) {
-        // console.log(board[coords[0] - 1][coords[1] - 1])
         if (board[coords[0] - 1][coords[1] - 1] === true) {
             console.log('already used')
             return true

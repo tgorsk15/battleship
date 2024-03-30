@@ -49,12 +49,10 @@ export const domManipulation = function () {
                 // console.log(cell.coordinates)
                 if (isComputer === true) {
                     appendElement(cell, 'cell-c', row);
-                    cell.setAttribute('id', 
-                    `${cell.coordinates[0]} ${cell.coordinates[1]}c`)
+                    cell.setAttribute('id', `${i} ${j}c`)
                 } else {
                    appendElement(cell, 'cell', row);
-                   cell.setAttribute('id', 
-                    `${cell.coordinates[0]} ${cell.coordinates[1]}h`) 
+                   cell.setAttribute('id', `${i} ${j}h`) 
                 }
                 
             }
@@ -72,19 +70,19 @@ export const domManipulation = function () {
                 // need to trigger recieveAttack on the correct
                 // game board 
                 // need to trigger computer's attack in response
-                // need to give feedback on each gameboard
             })
         })
             
     }
 
     function useGridSpot(coords, status, name) {
+        // registers that teh grid spot was used, and displays
+        // either a hit or miss
 
         if (name === 'Player 2') {
             console.log(status);
             const usedCell = document.getElementById(
                 `${coords[0]} ${coords[1]}c`)
-            console.log(usedCell)
 
             if (status === 'hit') {
                 usedCell.textContent = 'X'
@@ -93,7 +91,15 @@ export const domManipulation = function () {
             }
 
         } else {
-            console.log(humanCells)
+            console.log(status);
+            const usedCell = document.getElementById(
+                `${coords[0]} ${coords[1]}c`)
+
+            if (status === 'hit') {
+                usedCell.textContent = 'X'
+            } else if (status === 'miss') {
+                usedCell.textContent = '.'
+            }
         }
         console.log('used up the spot');
     }
