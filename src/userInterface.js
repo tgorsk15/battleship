@@ -49,8 +49,12 @@ export const domManipulation = function () {
                 // console.log(cell.coordinates)
                 if (isComputer === true) {
                     appendElement(cell, 'cell-c', row);
+                    cell.setAttribute('id', 
+                    `${cell.coordinates[0]} ${cell.coordinates[1]}c`)
                 } else {
-                   appendElement(cell, 'cell', row); 
+                   appendElement(cell, 'cell', row);
+                   cell.setAttribute('id', 
+                    `${cell.coordinates[0]} ${cell.coordinates[1]}h`) 
                 }
                 
             }
@@ -64,11 +68,9 @@ export const domManipulation = function () {
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
                 console.log(cell.coordinates);
-                console.log(computerBoardController);
                 computerBoardController.recieveAttack(cell.coordinates);
                 // need to trigger recieveAttack on the correct
-                // game board (need to get back to initialize game
-                // to do this!)
+                // game board 
                 // need to trigger computer's attack in response
                 // need to give feedback on each gameboard
             })
@@ -76,8 +78,24 @@ export const domManipulation = function () {
             
     }
 
-    function disableGrid() {
+    function useGridSpot(coords, status, name) {
 
+        if (name === 'Player 2') {
+            console.log(status);
+            const usedCell = document.getElementById(
+                `${coords[0]} ${coords[1]}c`)
+            console.log(usedCell)
+
+            if (status === 'hit') {
+                usedCell.textContent = 'X'
+            } else if (status === 'miss') {
+                usedCell.textContent = '.'
+            }
+
+        } else {
+            console.log(humanCells)
+        }
+        console.log('used up the spot');
     }
 
     function appendElement(elementName, className, fatherElement ) {
@@ -87,7 +105,7 @@ export const domManipulation = function () {
         return elementName;
     }
 
-    return {renderGameBoard, appendElement, buildGrid, disableGrid,
-        setGridTriggers}
+    return {renderGameBoard, appendElement, buildGrid,
+        setGridTriggers, useGridSpot}
 
 }

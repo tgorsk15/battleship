@@ -11,9 +11,12 @@
 // that you use to select the corresponding array item in each
 // of the arrays that represents a row on the board
 import { Ship, createFleet } from "./ship-object"
+import { domManipulation } from "./userInterface";
 
+const runDOM = domManipulation();
 
-export function gameBoardController(fleet) {
+export function gameBoardController(fleet, name) {
+    const playerName = name;
     const board = [];
     const ships = fleet;
 
@@ -84,7 +87,7 @@ export function gameBoardController(fleet) {
                 }
             })
         }
-        updateBoardSpot(coords);
+        updateBoardSpot(coords, attackStatus);
         return attackStatus
     }
 
@@ -99,9 +102,10 @@ export function gameBoardController(fleet) {
         }
     }
 
-    function updateBoardSpot(coords) {
+    function updateBoardSpot(coords, attackStatus) {
         board[coords[0] - 1][coords[1] - 1] = true;
         // console.log(board)
+        runDOM.useGridSpot(coords, attackStatus, playerName)
         return board
     }
 

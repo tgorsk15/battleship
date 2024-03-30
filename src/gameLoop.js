@@ -9,7 +9,7 @@ export const initializeGame = function createGame() {
 
     const humanPlayer = new Player('Player 1')
     const humanFleet = createFleet()
-    humanPlayer.gameBoard = gameBoardController(humanFleet);
+    humanPlayer.gameBoard = gameBoardController(humanFleet, humanPlayer.player);
     const humanBoard = humanPlayer.gameBoard
     
 
@@ -17,7 +17,7 @@ export const initializeGame = function createGame() {
 
     const AIplayer = new Player('Player 2');
     const computerFleet = createOppFleet();
-    AIplayer.gameBoard = gameBoardController(computerFleet);
+    AIplayer.gameBoard = gameBoardController(computerFleet, AIplayer.player);
     const computerBoard = AIplayer.gameBoard;
     computerBoard.createBoard();
 
