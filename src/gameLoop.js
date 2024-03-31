@@ -11,6 +11,7 @@ export const initializeGame = function createGame() {
     const humanFleet = createFleet()
     humanPlayer.gameBoard = gameBoardController(humanFleet, humanPlayer.player);
     const humanBoard = humanPlayer.gameBoard
+    humanBoard.createBoard();
     
 
 
@@ -23,7 +24,7 @@ export const initializeGame = function createGame() {
 
     
     runDOM.renderGameBoard(computerBoard.createBoard(), AIplayer.player);
-    runDOM.renderGameBoard(computerBoard, humanPlayer.player);
+    runDOM.renderGameBoard(computerBoard, humanPlayer.player, humanBoard);
     
 
     // call render dialogue box here

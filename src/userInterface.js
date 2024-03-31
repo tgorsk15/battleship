@@ -1,16 +1,14 @@
 /* eslint-disable import/prefer-default-export */
+import { computerPlayer } from "./player";
 
-
-export const initialLoad = function() {
-
-}
+const computerMoves = computerPlayer()
 
 
 export const domManipulation = function () {
     const playerBoards = document.querySelector('.gameboards');
 
 
-    function renderGameBoard(boardController, playerName) {
+    function renderGameBoard(boardController, playerName, humanBoard) {
         let isComputer = false;
         if (playerName === 'Player 2') {
             isComputer = true
@@ -32,7 +30,7 @@ export const domManipulation = function () {
         
         if (isComputer === false) {
             console.log('triggered')
-            setGridTriggers(boardController)
+            setGridTriggers(boardController, humanBoard);
         }
         
 
@@ -60,9 +58,9 @@ export const domManipulation = function () {
 
     }
 
-    function setGridTriggers(computerBoardController) {
+    function setGridTriggers(computerBoardController, humanBoardController) {
         const cells = document.querySelectorAll('.cell-c');
-        console.log(cells);
+        // console.log(cells);
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
                 console.log(cell.coordinates);
@@ -70,6 +68,9 @@ export const domManipulation = function () {
                 // need to trigger recieveAttack on the correct
                 // game board 
                 // need to trigger computer's attack in response
+                console.log(humanBoardController);
+                const cp = computerMoves.pickRandomCell(humanBoardController);
+                humanBoardController.recieveAttack(cp);
             })
         })
             
@@ -93,7 +94,7 @@ export const domManipulation = function () {
         } else {
             console.log(status);
             const usedCell = document.getElementById(
-                `${coords[0]} ${coords[1]}c`)
+                `${coords[0]} ${coords[1]}h`)
 
             if (status === 'hit') {
                 usedCell.textContent = 'X'
@@ -101,7 +102,6 @@ export const domManipulation = function () {
                 usedCell.textContent = '.'
             }
         }
-        console.log('used up the spot');
     }
 
     function appendElement(elementName, className, fatherElement ) {

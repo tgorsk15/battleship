@@ -42,7 +42,7 @@ export function createFleet() {
  
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat)
 
-    boardRun.placeHorizontalShip(1, 8, carrier);
+    boardRun.placeHorizontalShip(1, 5, carrier);
     boardRun.placeVerticalShip(4,1, battleship)
     boardRun.placeHorizontalShip(7, 4, destroyer);
     boardRun.placeVerticalShip(7, 8, submarine);
