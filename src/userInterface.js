@@ -6,7 +6,7 @@ const computerMoves = computerPlayer()
 
 export const domManipulation = function () {
     const playerBoards = document.querySelector('.gameboards');
-
+    const dialogueContainer = document.querySelector('.dialogue-container')
 
     function renderGameBoard(boardController, playerName, humanBoard) {
         let isComputer = false;
@@ -104,6 +104,11 @@ export const domManipulation = function () {
         }
     }
 
+    function renderDialogueBox() {
+        const dialogueBox = document.createElement('div');
+        appendElement(dialogueBox, 'dialogue-box', dialogueContainer)
+    }
+
     function appendElement(elementName, className, fatherElement ) {
         elementName.classList.add(className);
         fatherElement.appendChild(elementName);
@@ -112,6 +117,6 @@ export const domManipulation = function () {
     }
 
     return {renderGameBoard, appendElement, buildGrid,
-        setGridTriggers, useGridSpot}
+        setGridTriggers, useGridSpot, renderDialogueBox}
 
 }

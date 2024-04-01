@@ -31,7 +31,6 @@ export const computerPlayer = function () {
             pickRandomCell(humanBoard);
         } else if (repeatBoolean === false) {
             visited.push(compCoords);
-            console.log(compCoords)
             humanBoard.recieveAttack(compCoords);
 
             return compCoords 
