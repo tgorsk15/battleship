@@ -60,17 +60,15 @@ export const domManipulation = function () {
 
     function setGridTriggers(computerBoardController, humanBoardController) {
         const cells = document.querySelectorAll('.cell-c');
-        // console.log(cells);
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
                 console.log(cell.coordinates);
                 computerBoardController.recieveAttack(cell.coordinates);
-                // need to trigger recieveAttack on the correct
-                // game board 
-                // need to trigger computer's attack in response
+
+                // trigger computer's attack in response
                 console.log(humanBoardController);
                 computerMoves.pickRandomCell(humanBoardController);
-                // humanBoardController.recieveAttack(cp);
+
             })
         })
             
@@ -104,6 +102,11 @@ export const domManipulation = function () {
         }
     }
 
+    function freezeGrid() {
+        const gameboard = document.querySelector('.gameboard');
+        gameboard.style.pointerEvents = 'none';
+    }
+
     function renderDialogueBox() {
         const dialogueBox = document.createElement('div');
         appendElement(dialogueBox, 'dialogue-box', dialogueContainer)
@@ -118,6 +121,8 @@ export const domManipulation = function () {
         appendElement(textBox3, 'text-box3', dialogueBox)
     }
 
+
+
     function appendElement(elementName, className, fatherElement ) {
         elementName.classList.add(className);
         fatherElement.appendChild(elementName);
@@ -126,9 +131,11 @@ export const domManipulation = function () {
     }
 
     return {renderGameBoard, appendElement, buildGrid,
-        setGridTriggers, useGridSpot, renderDialogueBox}
+        setGridTriggers, useGridSpot, freezeGrid, renderDialogueBox}
 
 }
+
+
 
 export const dialogueController = function() {
 
@@ -173,12 +180,17 @@ export const dialogueController = function() {
 
     }
 
-    function endGameMessage() {
+    function endGameMessage(name) {
+        const textBox3 = document.querySelector('.text-box3')
         // maybe put trigger here to make a 'restart game'
         // button to pop up
+        if (name === 'Player 2') {
+            textBox3.textContent = 'The enemy fleet has been sank. Excellent work Soldier!'
+        } else {
+            textBox3.textContent = 'We have lost our fleet and been defeated. Abort the mission!'
+        }
     }
 
-    
 
     return {placeShipsMessage, moveResult,
         sunkShipMessage, endGameMessage}

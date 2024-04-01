@@ -104,7 +104,8 @@ export function gameBoardController(fleet, name) {
         console.log(ships)
         // console.log(board)
         if (ships.length === 0) {
-            console.log('player defeated');
+            dialogueRefresh.endGameMessage(playerName)
+            endGame()
             return true
         } else {
             return false
@@ -127,11 +128,17 @@ export function gameBoardController(fleet, name) {
         
     }
 
+    function endGame() {
+        // want to disable both gameBoards
+        // want to make the restart button appear
+        console.log('ending game')
+        runDOM.freezeGrid()
+    }
     // likely will have to implement check to make sure a ship can
     // be placed with no overlap
 
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
-    checkAllSunk, updateBoardSpot, checkIfUsed }
+    checkAllSunk, updateBoardSpot, checkIfUsed, endGame }
 }
 
