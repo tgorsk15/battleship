@@ -108,18 +108,24 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     height: 20vh;
-    width: 50vw;
+    width: 45vw;
     background-color: rgb(77, 134, 77);
 }
 
 .text-box1 {
-    height: 5vh;
-    width: 45vw;
+    height: 4vh;
+    width: 40vw;
     background-color: lightblue;
 }
 
 .text-box2 {
-    height: 5vh;
-    width: 45vw;
+    height: 4vh;
+    width: 40vw;
+    background-color: lightblue;
+}
+
+.text-box3 {
+    height: 4vh;
+    width: 40vw;
     background-color: lightblue;
 }

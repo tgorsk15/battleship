@@ -113,6 +113,9 @@ export const domManipulation = function () {
 
         const textBox2 = document.createElement('div')
         appendElement(textBox2, 'text-box2', dialogueBox)
+
+        const textBox3 = document.createElement('div');
+        appendElement(textBox3, 'text-box3', dialogueBox)
     }
 
     function appendElement(elementName, className, fatherElement ) {
@@ -135,30 +138,38 @@ export const dialogueController = function() {
 
     function moveResult(status, playerName, coords, ship = null) {
         // need attackStatus, ship name, coordinates
-        const textBox1 = document.querySelector('.text-box1')
+        const textBox1 = document.querySelector('.text-box1');
+        const textBox2 = document.querySelector('.text-box2');
         console.log('dialogue recorded')
-        console.log(status)
         if (playerName !== 'Player 2') {
             if (status === 'hit') {
-                textBox1.textContent = `The enemy has hit your ${ship.name}
-                at row: ${coords[0]} column: ${coords[1]}!!`
+                textBox2.textContent = `The enemy has hit your ${ship.name}
+                at row: ${coords[0]} column: ${coords[1]}!`
             } else if (status === 'miss') {
-                textBox1.textContent = `The enemy attacked row:
-                ${coords[0]} column:${coords[1]} and missed!!`
+                textBox2.textContent = `The enemy attacked row:
+                ${coords[0]} column: ${coords[1]} and missed!`
             }
 
         } else if (playerName === 'Player 2') {
             if (status === 'hit') {
                 textBox1.textContent = `You hit the enemy's ${ship.name}
-                at row: ${coords[0]} column: ${coords[1]}!!`
+                at row: ${coords[0]} column: ${coords[1]}!`
             } else if (status === 'miss') {
                 textBox1.textContent = `You attacked row:
-                ${coords[0]} column:${coords[1]} and missed!!`
+                ${coords[0]} column: ${coords[1]} and missed!`
             }
         }
     }
 
-    function sunkShipMessage() {
+    function sunkShipMessage(ship, name) {
+        const textBox1 = document.querySelector('.text-box1');
+        const textBox2 = document.querySelector('.text-box2');
+        console.log(ship, name)
+        if (name !== 'Player 2') {
+            textBox2.textContent = `Your ${ship.name} has been sunk!!`
+        } else if (name === 'Player 2') {
+            textBox1.textContent = `You sunk the enemy's ${ship.name}!!`
+        }
 
     }
 

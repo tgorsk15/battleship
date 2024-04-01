@@ -73,7 +73,6 @@ export function gameBoardController(fleet, name) {
                 }
 
                 if (coord[0] === coords[0] && coord[1] === coords[1]) {
-                    console.log([coord[0], coord[1]])
                     console.log('hit');
                     attackStatus = 'hit'
                     console.log(attackStatus)
@@ -84,6 +83,7 @@ export function gameBoardController(fleet, name) {
 
                     const sunkCheck = ships[i].checkIfSunk()
                     if (sunkCheck) {
+                        dialogueRefresh.sunkShipMessage(ships[i], playerName)
                         ships.splice(i, 1);
                         checkAllSunk()
                     }
@@ -92,14 +92,17 @@ export function gameBoardController(fleet, name) {
             })
         }
         updateBoardSpot(coords, attackStatus);
-        dialogueRefresh.moveResult(attackStatus,
-            playerName, coords)
+        if (attackStatus === 'miss') {
+            dialogueRefresh.moveResult(attackStatus,
+                playerName, coords)
+        }
+        
         return attackStatus
     }
 
     function checkAllSunk() {
         console.log(ships)
-        console.log(board)
+        // console.log(board)
         if (ships.length === 0) {
             console.log('player defeated');
             return true
@@ -117,7 +120,7 @@ export function gameBoardController(fleet, name) {
 
     function checkIfUsed(coords) {
         if (board[coords[0] - 1][coords[1] - 1] === true) {
-            console.log('already used')
+            // console.log('already used')
             return true
         }
         return false
@@ -126,7 +129,6 @@ export function gameBoardController(fleet, name) {
 
     // likely will have to implement check to make sure a ship can
     // be placed with no overlap
-    console.log('board exists');
 
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
