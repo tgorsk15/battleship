@@ -81,7 +81,7 @@ export const domManipulation = function () {
         // either a hit or miss
 
         if (name === 'Player 2') {
-            console.log(status);
+            // console.log(status);
             const usedCell = document.getElementById(
                 `${coords[0]} ${coords[1]}c`)
 
@@ -92,7 +92,7 @@ export const domManipulation = function () {
             }
 
         } else {
-            console.log(status);
+            // console.log(status);
             const usedCell = document.getElementById(
                 `${coords[0]} ${coords[1]}h`)
 
@@ -107,6 +107,12 @@ export const domManipulation = function () {
     function renderDialogueBox() {
         const dialogueBox = document.createElement('div');
         appendElement(dialogueBox, 'dialogue-box', dialogueContainer)
+
+        const textBox1 = document.createElement('div')
+        appendElement(textBox1, 'text-box1', dialogueBox)
+
+        const textBox2 = document.createElement('div')
+        appendElement(textBox2, 'text-box2', dialogueBox)
     }
 
     function appendElement(elementName, className, fatherElement ) {
@@ -119,4 +125,50 @@ export const domManipulation = function () {
     return {renderGameBoard, appendElement, buildGrid,
         setGridTriggers, useGridSpot, renderDialogueBox}
 
+}
+
+export const dialogueController = function() {
+
+    function  placeShipsMessage() {
+
+    }
+
+    function moveResult(status, playerName, coords, ship = null) {
+        // need attackStatus, ship name, coordinates
+        const textBox1 = document.querySelector('.text-box1')
+        console.log('dialogue recorded')
+        console.log(status)
+        if (playerName !== 'Player 2') {
+            if (status === 'hit') {
+                textBox1.textContent = `The enemy has hit your ${ship.name}
+                at row: ${coords[0]} column: ${coords[1]}!!`
+            } else if (status === 'miss') {
+                textBox1.textContent = `The enemy attacked row:
+                ${coords[0]} column:${coords[1]} and missed!!`
+            }
+
+        } else if (playerName === 'Player 2') {
+            if (status === 'hit') {
+                textBox1.textContent = `You hit the enemy's ${ship.name}
+                at row: ${coords[0]} column: ${coords[1]}!!`
+            } else if (status === 'miss') {
+                textBox1.textContent = `You attacked row:
+                ${coords[0]} column:${coords[1]} and missed!!`
+            }
+        }
+    }
+
+    function sunkShipMessage() {
+
+    }
+
+    function endGameMessage() {
+        // maybe put trigger here to make a 'restart game'
+        // button to pop up
+    }
+
+    
+
+    return {placeShipsMessage, moveResult,
+        sunkShipMessage, endGameMessage}
 }

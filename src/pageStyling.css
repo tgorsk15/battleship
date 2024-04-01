@@ -93,3 +93,33 @@ body {
 .cell:hover, .cell-c:hover {
     background-color: antiquewhite;
 }
+
+
+/* styling for dialogue box */
+.dialogue-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 3 / 4;
+}
+
+.dialogue-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 20vh;
+    width: 50vw;
+    background-color: rgb(77, 134, 77);
+}
+
+.text-box1 {
+    height: 5vh;
+    width: 45vw;
+    background-color: lightblue;
+}
+
+.text-box2 {
+    height: 5vh;
+    width: 45vw;
+    background-color: lightblue;
+}

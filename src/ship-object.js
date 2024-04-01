@@ -54,11 +54,11 @@ export function createFleet() {
 export function createOppFleet() {
     const ships = []
 
-    const carrier = new Ship(5);
-    const battleship = new Ship(4);
-    const destroyer = new Ship(3);
-    const submarine = new Ship(3);
-    const patrolBoat = new Ship(2);
+    const carrier = new Ship(5, 'Carrier');
+    const battleship = new Ship(4, 'Battleship');
+    const destroyer = new Ship(3, 'Destroyer');
+    const submarine = new Ship(3, 'Submarine');
+    const patrolBoat = new Ship(2, 'Patrol Boat');
 
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat);
 

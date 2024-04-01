@@ -11,16 +11,17 @@
 // that you use to select the corresponding array item in each
 // of the arrays that represents a row on the board
 import { Ship, createFleet } from "./ship-object"
-import { domManipulation } from "./userInterface";
+import { domManipulation, dialogueController } from "./userInterface";
 
 const runDOM = domManipulation();
+const dialogueRefresh = dialogueController();
 
 export function gameBoardController(fleet, name) {
     const playerName = name;
     const board = [];
     const ships = fleet;
 
-    console.log(ships);
+    // console.log(ships);
 
 
     function createBoard() {
@@ -75,8 +76,11 @@ export function gameBoardController(fleet, name) {
                     console.log([coord[0], coord[1]])
                     console.log('hit');
                     attackStatus = 'hit'
+                    console.log(attackStatus)
                     ships[i].hit();
                     updateBoardSpot(coords);
+                    dialogueRefresh.moveResult(attackStatus,
+                        playerName, coords, ships[i])
 
                     const sunkCheck = ships[i].checkIfSunk()
                     if (sunkCheck) {
@@ -88,6 +92,8 @@ export function gameBoardController(fleet, name) {
             })
         }
         updateBoardSpot(coords, attackStatus);
+        dialogueRefresh.moveResult(attackStatus,
+            playerName, coords)
         return attackStatus
     }
 
