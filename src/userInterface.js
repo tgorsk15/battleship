@@ -69,8 +69,8 @@ export const domManipulation = function () {
                 // game board 
                 // need to trigger computer's attack in response
                 console.log(humanBoardController);
-                const cp = computerMoves.pickRandomCell(humanBoardController);
-                humanBoardController.recieveAttack(cp);
+                computerMoves.pickRandomCell(humanBoardController);
+                // humanBoardController.recieveAttack(cp);
             })
         })
             
@@ -88,7 +88,7 @@ export const domManipulation = function () {
             if (status === 'hit') {
                 usedCell.textContent = 'X'
             } else if (status === 'miss') {
-                usedCell.textContent = '.'
+                usedCell.textContent = 'O'
             }
 
         } else {
@@ -99,7 +99,7 @@ export const domManipulation = function () {
             if (status === 'hit') {
                 usedCell.textContent = 'X'
             } else if (status === 'miss') {
-                usedCell.textContent = '.'
+                usedCell.textContent = 'O'
             }
         }
     }
