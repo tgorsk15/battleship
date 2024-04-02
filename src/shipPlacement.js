@@ -9,22 +9,25 @@
 
 
 export const humanShipPlacement = function (humanBoard, ships) {
-    // memory storage for where ships are placed, so new ships
-    // can't be placed on top of them
+    // memory storage for where cells can't be used again
     const occupiedCells = [];
 
-    // this will be either horizontal or vertical
+    // sets plane
     const currentPlane = 'horizontal';
     const humanCells = document.querySelectorAll('.cell');
     
     const allShipsPlaced = false;
     const shipIndex = 0;
+    const activeCells = [];
 
     if (allShipsPlaced === false) {
         humanCells.forEach((cell) => {
             cell.addEventListener('mouseover', () => {
                 cellHover(cell, ships[shipIndex])
             });
+            cell.addEventListener('mouseout', () => {
+                cell.classList.remove('valid-placement', 'invalid-placement');
+            })
             cell.addEventListener('click', () => {
                 console.log(cell.id)
             });
@@ -38,15 +41,27 @@ export const humanShipPlacement = function (humanBoard, ships) {
         // have to check if its horizontal or vertical
         // then check if starting point + ship length is valid
 
-        // if valid, give cell AND its follwers
-        // their valid Placement class
-
-        // if invalid give cell + followers invalid class
         if (currentPlane === 'horizontal') {
+            const cellRow = cellCoords[0]
+            let cellColumn = cellCoords[1];
+            
+            for (let i = 0; i < ship.length; i++) {
+                const activeCell = document.getElementById(`${cellRow} ${cellColumn}h`)
+                activeCells.push(activeCell);
+                cellColumn += 1
+            }
+            console.log(activeCells)
+
             if ((cellCoords[1] + ship.length) - 1 <= 10 ) {
                 console.log('this is valid!')
-                cell.classList.add('valid-placement');
-            };
+                activeCells.forEach((elem) => {
+                   elem.classList.add('valid-placement'); 
+                })
+                
+            } else if ((cellCoords[1] + ship.length) - 1 > 10){
+                console.log('not valid');
+                cell.classList.add('invalid-placement');
+            }
 
         } else if (currentPlane === 'vertical') {
 

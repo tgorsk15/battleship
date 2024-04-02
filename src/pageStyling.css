@@ -92,7 +92,7 @@ body {
 }
 
 .cell:hover, .cell-c:hover {
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
 }
 
 
@@ -159,4 +159,8 @@ body {
 
 .valid-placement {
     background-color: rgb(110, 189, 110);
+}
+
+.invalid-placement {
+    background-color: rgb(249, 116, 116);
 }
