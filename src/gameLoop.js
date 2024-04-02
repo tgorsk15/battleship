@@ -3,6 +3,7 @@ import { Player, userPlayer, computerPlayer } from "./player";
 import { gameBoardController } from "./gameboardController";
 import { createFleet, createOppFleet } from "./ship-object";
 import { domManipulation } from "./userInterface";
+import { humanShipPlacement } from "./shipPlacement";
 
 export const initializeGame = function createGame() {
     const runDOM = domManipulation();
@@ -13,8 +14,6 @@ export const initializeGame = function createGame() {
     const humanBoard = humanPlayer.gameBoard
     humanBoard.createBoard();
     
-
-
 
     const AIplayer = new Player('Player 2');
     const computerFleet = createOppFleet();
@@ -28,6 +27,9 @@ export const initializeGame = function createGame() {
     
     // call render dialogue box here
     runDOM.renderDialogueBox();
+
+    // call shipPlacement function here for humanBoard
+    const humanPlacement = humanShipPlacement()
 }
 
 export const resetInterface = function (bodyE, endBox) {

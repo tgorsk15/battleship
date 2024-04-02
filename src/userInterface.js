@@ -34,7 +34,6 @@ export const domManipulation = function () {
             setGridTriggers(boardController, humanBoard);
         }
         
-
     }
 
     function buildGrid(gameboardElement, isComputer) {
