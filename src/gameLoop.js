@@ -31,5 +31,5 @@ export const initializeGame = function createGame() {
 }
 
 export const resetInterface = function () {
-
+    console.log('reseting all this shit');
 }

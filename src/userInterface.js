@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { computerPlayer } from "./player";
+import { resetInterface } from "./gameLoop";
 
 const computerMoves = computerPlayer()
 
@@ -133,7 +134,9 @@ export const domManipulation = function () {
         const resetGameButton = document.createElement('button');
         appendElement(resetGameButton, 'reset-game-button', endGameBox);
 
-        // resetGame
+        resetGameButton.addEventListener('click', () => {
+            resetInterface();
+        })
     }
 
     function appendElement(elementName, className, fatherElement ) {
@@ -148,6 +151,7 @@ export const domManipulation = function () {
         renderEndGame}
 
 }
+
 
 
 
