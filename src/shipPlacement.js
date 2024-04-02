@@ -18,7 +18,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
     
     const allShipsPlaced = false;
     const shipIndex = 0;
-    const activeCells = [];
+    
 
     if (allShipsPlaced === false) {
         humanCells.forEach((cell) => {
@@ -37,7 +37,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
     function cellHover(cell, ship) {
         console.log(ship);
         const cellCoords = cell.coordinates;
-        console.log(cellCoords);
+        const activeCells = [];
         // have to check if its horizontal or vertical
         // then check if starting point + ship length is valid
 
@@ -49,8 +49,11 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 const activeCell = document.getElementById(`${cellRow} ${cellColumn}h`)
                 activeCells.push(activeCell);
                 cellColumn += 1
+                if (cellColumn > 10) {
+                    break
+                }
             }
-            console.log(activeCells)
+            console.log(activeCells);
 
             if ((cellCoords[1] + ship.length) - 1 <= 10 ) {
                 console.log('this is valid!')
@@ -60,8 +63,16 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 
             } else if ((cellCoords[1] + ship.length) - 1 > 10){
                 console.log('not valid');
-                cell.classList.add('invalid-placement');
+                activeCells.forEach((elem) => {
+                    elem.classList.add('invalid-placement'); 
+                })
             }
+
+            cell.addEventListener('mouseout', () => {
+                activeCells.forEach((elem) => {
+                    elem.classList.remove('valid-placement', 'invalid-placement')
+                })
+            })
 
         } else if (currentPlane === 'vertical') {
 
