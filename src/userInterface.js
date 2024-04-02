@@ -2,10 +2,10 @@
 import { computerPlayer } from "./player";
 import { resetInterface } from "./gameLoop";
 
-const computerMoves = computerPlayer()
-
 
 export const domManipulation = function () {
+    const computerMoves = computerPlayer()
+
     const playerBoards = document.querySelector('.gameboards');
     const dialogueContainer = document.querySelector('.dialogue-container')
 
