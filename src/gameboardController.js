@@ -101,8 +101,7 @@ export function gameBoardController(fleet, name) {
     }
 
     function checkAllSunk() {
-        console.log(ships)
-        // console.log(board)
+        console.log(ships);
         if (ships.length === 0) {
             dialogueRefresh.endGameMessage(playerName)
             endGame()

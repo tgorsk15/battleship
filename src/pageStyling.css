@@ -153,3 +153,10 @@ body {
     width: 50px;
     background-color: rgb(144, 58, 58);
 }
+
+
+/* styling for ship Placement */
+
+.valid-placement {
+    background-color: rgb(110, 189, 110);
+}

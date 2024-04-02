@@ -10,6 +10,7 @@ export const initializeGame = function createGame() {
 
     const humanPlayer = new Player('Player 1')
     const humanFleet = createFleet()
+    console.log(humanFleet)
     humanPlayer.gameBoard = gameBoardController(humanFleet, humanPlayer.player);
     const humanBoard = humanPlayer.gameBoard
     humanBoard.createBoard();
@@ -29,7 +30,7 @@ export const initializeGame = function createGame() {
     runDOM.renderDialogueBox();
 
     // call shipPlacement function here for humanBoard
-    const humanPlacement = humanShipPlacement()
+    const humanPlacement = humanShipPlacement(humanBoard, humanFleet);
 }
 
 export const resetInterface = function (bodyE, endBox) {
