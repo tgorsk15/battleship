@@ -131,8 +131,9 @@ export function gameBoardController(fleet, name) {
     function endGame() {
         // want to disable both gameBoards
         // want to make the restart button appear
-        console.log('ending game')
-        runDOM.freezeGrid()
+        console.log('ending game');
+        runDOM.freezeGrid();
+        runDOM.renderEndGame();
     }
     // likely will have to implement check to make sure a ship can
     // be placed with no overlap

@@ -52,7 +52,6 @@ export const domManipulation = function () {
                    appendElement(cell, 'cell', row);
                    cell.setAttribute('id', `${i} ${j}h`) 
                 }
-                
             }
         }
 
@@ -122,6 +121,20 @@ export const domManipulation = function () {
     }
 
 
+    function renderEndGame() {
+        const bodyElement = document.body
+
+        const endGameBox = document.createElement('div');
+        appendElement(endGameBox, 'end-game-box', bodyElement);
+
+        const endGameIcon = document.createElement('div');
+        appendElement(endGameIcon, 'end-game-icon', endGameBox);
+
+        const resetGameButton = document.createElement('button');
+        appendElement(resetGameButton, 'reset-game-button', endGameBox);
+
+        // resetGame
+    }
 
     function appendElement(elementName, className, fatherElement ) {
         elementName.classList.add(className);
@@ -131,7 +144,8 @@ export const domManipulation = function () {
     }
 
     return {renderGameBoard, appendElement, buildGrid,
-        setGridTriggers, useGridSpot, freezeGrid, renderDialogueBox}
+        setGridTriggers, useGridSpot, freezeGrid, renderDialogueBox,
+        renderEndGame}
 
 }
 

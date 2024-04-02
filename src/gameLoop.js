@@ -27,5 +27,9 @@ export const initializeGame = function createGame() {
     runDOM.renderGameBoard(computerBoard, humanPlayer.player, humanBoard);
     
     // call render dialogue box here
-    runDOM.renderDialogueBox()
+    runDOM.renderDialogueBox();
+}
+
+export const resetInterface = function () {
+
 }

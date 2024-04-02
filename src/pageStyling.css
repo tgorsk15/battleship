@@ -6,6 +6,7 @@ html, body {
 
 body {
     background-color: navy;
+    position: relative;
 }
 
 .prompt-box {
@@ -128,4 +129,27 @@ body {
     height: 4vh;
     width: 40vw;
     background-color: lightblue;
+}
+
+
+/* styling for reset game */
+.end-game-box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 245px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: 250px;
+    background-color: azure;
+}
+
+.reset-game-button {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(144, 58, 58);
 }
