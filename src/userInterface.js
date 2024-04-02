@@ -135,7 +135,7 @@ export const domManipulation = function () {
         appendElement(resetGameButton, 'reset-game-button', endGameBox);
 
         resetGameButton.addEventListener('click', () => {
-            resetInterface();
+            resetInterface(bodyElement, endGameBox);
         })
     }
 
