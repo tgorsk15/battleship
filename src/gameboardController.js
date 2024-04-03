@@ -39,10 +39,9 @@ export function gameBoardController(fleet, name) {
     function placeHorizontalShip(row, col, ship) {
         for (let i = 0; i < ship.length; i++) {
             const newCoords = [row, col + i];
-            // put a check here to see if this conflicts with
-            // any other ship's coords 
             ship.coords.push(newCoords)
         }
+        console.log(ships);
         return ship
     }
 
