@@ -41,6 +41,10 @@ export const humanShipPlacement = function (humanBoard, ships) {
         // have to check if its horizontal or vertical
         // then check if starting point + ship length is valid
 
+        if (shipIndex=== 5) {
+            return
+        }
+
         if (currentPlane === 'horizontal') {
             const cellRow = cellCoords[0]
             let cellColumn = cellCoords[1];
@@ -78,6 +82,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 console.log(activeCells);
                 if (cell.classList.contains('valid-placement')) {
                     placeHorizontalShip(cellCoords, activeCells, ship);
+
                 }
                 
             })
