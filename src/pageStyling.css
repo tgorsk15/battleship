@@ -164,3 +164,7 @@ body {
 .invalid-placement {
     background-color: rgb(249, 116, 116);
 }
+
+.placed {
+    background-color: rgb(76, 76, 110);
+}

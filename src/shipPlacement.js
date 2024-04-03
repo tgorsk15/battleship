@@ -25,9 +25,9 @@ export const humanShipPlacement = function (humanBoard, ships) {
             cell.addEventListener('mouseover', () => {
                 cellHover(cell, ships[shipIndex])
             });
-            cell.addEventListener('mouseout', () => {
-                cell.classList.remove('valid-placement', 'invalid-placement');
-            })
+            // cell.addEventListener('mouseout', () => {
+            //     cell.classList.remove('valid-placement', 'invalid-placement');
+            // })
             cell.addEventListener('click', () => {
                 console.log(cell.id)
             });
@@ -72,6 +72,17 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 activeCells.forEach((elem) => {
                     elem.classList.remove('valid-placement', 'invalid-placement')
                 })
+            })
+
+            cell.addEventListener('click', () => {
+                console.log(activeCells);
+                if (cell.classList.contains('valid-placement')) {
+                    activeCells.forEach((elem) => {
+                        console.log(elem.coordinates);
+                        elem.classList.add('placed')
+                    });
+                }
+                
             })
 
         } else if (currentPlane === 'vertical') {
