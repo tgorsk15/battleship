@@ -17,7 +17,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
     const humanCells = document.querySelectorAll('.cell');
     
     const allShipsPlaced = false;
-    const shipIndex = 0;
+    let shipIndex = 0;
     
 
     if (allShipsPlaced === false) {
@@ -81,8 +81,9 @@ export const humanShipPlacement = function (humanBoard, ships) {
             cell.addEventListener('click', () => {
                 console.log(activeCells);
                 if (cell.classList.contains('valid-placement')) {
-                    placeHorizontalShip(cellCoords, activeCells, ship);
-
+                    placeHorizontally(cellCoords, activeCells, ship);
+                    shipIndex += 1;
+                    return shipIndex
                 }
                 
             })
@@ -93,7 +94,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
         }
     }
 
-    function placeHorizontalShip(cellCoords, activeCells, ship) {
+    function placeHorizontally(cellCoords, activeCells, ship) {
         activeCells.forEach((elem) => {
             console.log(activeCells)
             console.log(elem.coordinates);
@@ -104,7 +105,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
         console.log(occupiedCells)
     }
 
-    return { cellHover, placeHorizontalShip }
+    return { cellHover, placeHorizontally }
 }
 
 
