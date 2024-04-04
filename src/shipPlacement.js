@@ -10,6 +10,7 @@
 
 export const humanShipPlacement = function (humanBoard, ships) {
     // memory storage for where cells can't be used again
+    console.log('human trigger')
     const occupiedCells = [];
 
     // sets plane
@@ -20,7 +21,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
     let shipIndex = 0;
     
 
-    if (allShipsPlaced === false) {
+    // if (shipIndex !== 6) {
         humanCells.forEach((cell) => {
             cell.addEventListener('mouseover', () => {
                 cellHover(cell, ships[shipIndex])
@@ -28,11 +29,11 @@ export const humanShipPlacement = function (humanBoard, ships) {
             // cell.addEventListener('mouseout', () => {
             //     cell.classList.remove('valid-placement', 'invalid-placement');
             // })
-            cell.addEventListener('click', () => {
-                console.log(cell.id)
-            });
+            // cell.addEventListener('click', () => {
+            //     console.log(cell.id)
+            // });
         })
-    }
+    // }
     
     function cellHover(cell, ship) {
         console.log(ship);
@@ -41,9 +42,9 @@ export const humanShipPlacement = function (humanBoard, ships) {
         // have to check if its horizontal or vertical
         // then check if starting point + ship length is valid
 
-        if (shipIndex=== 5) {
-            return
-        }
+        // if (shipIndex === 6) {
+        //     return
+        // }
 
         if (currentPlane === 'horizontal') {
             const cellRow = cellCoords[0]
@@ -83,9 +84,10 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 if (cell.classList.contains('valid-placement')) {
                     placeHorizontally(cellCoords, activeCells, ship);
                     shipIndex += 1;
-                    return shipIndex
+                    console.log('new ship');
+                    console.log(shipIndex);
                 }
-                
+                return shipIndex
             })
 
         } else if (currentPlane === 'vertical') {
