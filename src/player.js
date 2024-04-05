@@ -41,7 +41,6 @@ export const computerPlayer = function () {
 
     function checkRepeatCell(coords) {
         const stringedCoords = JSON.stringify(coords);
-        console.log(stringedCoords)
         const existsBoolean = visited.some((coord) => JSON.stringify(coord) === stringedCoords)
         console.log(existsBoolean)
         return existsBoolean

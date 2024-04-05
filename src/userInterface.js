@@ -156,9 +156,9 @@ export const domManipulation = function () {
 
 export const dialogueController = function() {
 
-    function  placeShipsMessage() {
+    // function  placeShipsMessage() {
 
-    }
+    // }
 
     function moveResult(status, playerName, coords, ship = null) {
         // need attackStatus, ship name, coordinates
@@ -209,6 +209,5 @@ export const dialogueController = function() {
     }
 
 
-    return {placeShipsMessage, moveResult,
-        sunkShipMessage, endGameMessage}
+    return {moveResult, sunkShipMessage, endGameMessage}
 }

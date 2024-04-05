@@ -1,8 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 
-// this will house the function that checks to see if ALL coords
-// are staying in bounds of the gameBoard
-
 // have to add buttons to UI to switch betwen horizontal and vertical
 // have to make a start button that user can press when all 
 // ships are placed
@@ -10,41 +7,38 @@
 
 export const humanShipPlacement = function (humanBoard, ships) {
     // memory storage for where cells can't be used again
-    console.log('human trigger')
     const occupiedCells = [];
 
     // sets plane
-    const currentPlane = 'vertical';
+    const currentPlane = 'horizontal';
     const humanCells = document.querySelectorAll('.cell');
     
-    const allShipsPlaced = false;
     let shipIndex = 0;
     
 
-    // if (shipIndex !== 6) {
-        humanCells.forEach((cell) => {
-            cell.addEventListener('mouseover', () => {
-                cellHover(cell, ships[shipIndex])
-            });
+    humanCells.forEach((cell) => {
+        cell.addEventListener('mouseover', () => {
+            cellHover(cell, ships[shipIndex])
+        });
 
-            cell.addEventListener('click', () => {
-                console.log(cell.activeCells);
-                if (cell.classList.contains('valid-placement')) {
-                    if (currentPlane === 'horizontal') {
-                        placeHorizontally(cell.coordinates, cell.activeCells, ships[shipIndex]);
-                        shipIndex += 1;
-                        console.log(shipIndex);
-                    } else if (currentPlane === 'vertical') {
-                        placeVertically(cell.coordinates, cell.activeCells, ships[shipIndex]);
-                        shipIndex += 1;
-                        console.log(shipIndex);
-                    }
-                    
+        cell.addEventListener('click', () => {
+            console.log(cell.activeCells);
+            if (cell.classList.contains('valid-placement')) {
+                if (currentPlane === 'horizontal') {
+                    placeHorizontally(cell.coordinates, cell.activeCells, ships[shipIndex]);
+                    shipIndex += 1;
+                    console.log(shipIndex);
+                } else if (currentPlane === 'vertical') {
+                    placeVertically(cell.coordinates, cell.activeCells, ships[shipIndex]);
+                    shipIndex += 1;
+                    console.log(shipIndex);
                 }
-                return shipIndex
-            })
+                
+            }
+            return shipIndex
         })
-    // }
+    })
+
     
     function cellHover(cell, ship) {
         console.log(ship);
@@ -53,7 +47,6 @@ export const humanShipPlacement = function (humanBoard, ships) {
         const groupedCells = cell.activeCells;
         // have to check if its horizontal or vertical
         // then check if starting point + ship length is valid
-
         if (shipIndex === 5) {
             return
         }
@@ -71,14 +64,15 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 }
             }
             console.log(groupedCells);
+            const conflicting = checkConflictingShips(groupedCells);
 
-            if ((cellCoords[1] + ship.length) - 1 <= 10 ) {
+            if ((cellCoords[1] + ship.length) - 1 <= 10 && conflicting === false) {
                 console.log('this is valid!')
                 groupedCells.forEach((elem) => {
                    elem.classList.add('valid-placement'); 
                 })
                 
-            } else if ((cellCoords[1] + ship.length) - 1 > 10){
+            } else if ((cellCoords[1] + ship.length) - 1 > 10 || conflicting === true){
                 console.log('not valid');
                 groupedCells.forEach((elem) => {
                     elem.classList.add('invalid-placement'); 
@@ -105,14 +99,16 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 }
             }
             console.log(groupedCells);
+            const conflicting = checkConflictingShips(groupedCells);
 
-            if ((cellCoords[0] + ship.length) - 1 <= 10 ) {
+
+            if ((cellCoords[0] + ship.length) - 1 <= 10 && conflicting === false ) {
                 console.log('this is valid!')
                 groupedCells.forEach((elem) => {
                    elem.classList.add('valid-placement'); 
                 })
                 
-            } else if ((cellCoords[0] + ship.length) - 1 > 10){
+            } else if ((cellCoords[0] + ship.length) - 1 > 10 || conflicting === true){
                 console.log('not valid');
                 groupedCells.forEach((elem) => {
                     elem.classList.add('invalid-placement'); 
@@ -151,7 +147,29 @@ export const humanShipPlacement = function (humanBoard, ships) {
         console.log(occupiedCells)
     }
 
-    return { cellHover, placeHorizontally }
+
+
+    function checkForRepeat(coords) {
+        const stringedCoords = JSON.stringify(coords);
+        // console.log(stringedCoords)
+        const existsBoolean = occupiedCells.some((coord) => JSON.stringify(coord) === stringedCoords)
+        console.log(existsBoolean)
+        return existsBoolean
+    }
+
+    function checkConflictingShips(activeCells) {
+        let alreadyUsed = false
+        activeCells.forEach((elem) => {
+            console.log(elem.coordinates);
+            if (checkForRepeat(elem.coordinates) === true) {
+                alreadyUsed = true
+            }
+        })
+        return alreadyUsed
+    }
+
+    return { cellHover, placeHorizontally, checkConflictingShips,
+        checkForRepeat }
 }
 
 
