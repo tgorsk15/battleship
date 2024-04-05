@@ -22,7 +22,7 @@ export const initializeGame = function createGame() {
     const computerBoard = AIplayer.gameBoard;
     computerBoard.createBoard();
 
-    
+    runDOM.renderStart();
     runDOM.renderGameBoard(computerBoard.createBoard(), AIplayer.player);
     runDOM.renderGameBoard(computerBoard, humanPlayer.player, humanBoard);
     

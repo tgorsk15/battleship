@@ -9,6 +9,12 @@ export const domManipulation = function () {
     const playerBoards = document.querySelector('.gameboards');
     const dialogueContainer = document.querySelector('.dialogue-container')
 
+    function renderStart() {
+        const rotateShipButton = document.createElement('button');
+        appendElement(rotateShipButton, 'rotate-ship', playerBoards)
+        rotateShipButton.textContent = 'Rotate';
+    }
+
     function renderGameBoard(boardController, playerName, humanBoard) {
         let isComputer = false;
         if (playerName === 'Player 2') {
@@ -145,7 +151,7 @@ export const domManipulation = function () {
         return elementName;
     }
 
-    return {renderGameBoard, appendElement, buildGrid,
+    return {renderStart, renderGameBoard, appendElement, buildGrid,
         setGridTriggers, useGridSpot, freezeGrid, renderDialogueBox,
         renderEndGame}
 

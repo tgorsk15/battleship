@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/prefer-default-export */
 
 // have to add buttons to UI to switch betwen horizontal and vertical
@@ -7,12 +8,14 @@
 
 export const humanShipPlacement = function (humanBoard, ships) {
     // memory storage for where cells can't be used again
+    const rotateButton = document.querySelector('.rotate-ship');
     const occupiedCells = [];
 
     // sets plane
-    const currentPlane = 'horizontal';
+    let currentPlane = 'horizontal';
+    createRotationAbility();
+
     const humanCells = document.querySelectorAll('.cell');
-    
     let shipIndex = 0;
     
 
@@ -22,7 +25,6 @@ export const humanShipPlacement = function (humanBoard, ships) {
         });
 
         cell.addEventListener('click', () => {
-            console.log(cell.activeCells);
             if (cell.classList.contains('valid-placement')) {
                 if (currentPlane === 'horizontal') {
                     placeHorizontally(cell.coordinates, cell.activeCells, ships[shipIndex]);
@@ -63,7 +65,6 @@ export const humanShipPlacement = function (humanBoard, ships) {
                     break
                 }
             }
-            console.log(groupedCells);
             const conflicting = checkConflictingShips(groupedCells);
 
             if ((cellCoords[1] + ship.length) - 1 <= 10 && conflicting === false) {
@@ -98,7 +99,6 @@ export const humanShipPlacement = function (humanBoard, ships) {
                     break
                 }
             }
-            console.log(groupedCells);
             const conflicting = checkConflictingShips(groupedCells);
 
 
@@ -151,21 +151,26 @@ export const humanShipPlacement = function (humanBoard, ships) {
 
     function checkForRepeat(coords) {
         const stringedCoords = JSON.stringify(coords);
-        // console.log(stringedCoords)
         const existsBoolean = occupiedCells.some((coord) => JSON.stringify(coord) === stringedCoords)
-        console.log(existsBoolean)
+        // console.log(existsBoolean)
         return existsBoolean
     }
 
     function checkConflictingShips(activeCells) {
         let alreadyUsed = false
         activeCells.forEach((elem) => {
-            console.log(elem.coordinates);
             if (checkForRepeat(elem.coordinates) === true) {
                 alreadyUsed = true
             }
         })
         return alreadyUsed
+    }
+
+    function createRotationAbility() {
+        rotateButton.addEventListener('click', () => {
+            const newPlane = switchPlane(currentPlane);
+            currentPlane = newPlane
+        })
     }
 
     return { cellHover, placeHorizontally, checkConflictingShips,
@@ -174,8 +179,9 @@ export const humanShipPlacement = function (humanBoard, ships) {
 
 
 export const computerPlacement = function () {
-
+    
 }
+
 
 function switchPlane(currentPlane) {
     if (currentPlane === 'horizontal') {
