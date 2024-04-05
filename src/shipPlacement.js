@@ -29,10 +29,16 @@ export const humanShipPlacement = function (humanBoard, ships) {
                 if (currentPlane === 'horizontal') {
                     placeHorizontally(cell.coordinates, cell.activeCells, ships[shipIndex]);
                     shipIndex += 1;
+                    if (shipIndex === 5) {
+                        computerPlacement();
+                    }
                     console.log(shipIndex);
                 } else if (currentPlane === 'vertical') {
                     placeVertically(cell.coordinates, cell.activeCells, ships[shipIndex]);
                     shipIndex += 1;
+                    if (shipIndex === 5) {
+                        computerPlacement();
+                    }
                     console.log(shipIndex);
                 }
                 
@@ -148,18 +154,12 @@ export const humanShipPlacement = function (humanBoard, ships) {
     }
 
 
-
-    function checkForRepeat(coords) {
-        const stringedCoords = JSON.stringify(coords);
-        const existsBoolean = occupiedCells.some((coord) => JSON.stringify(coord) === stringedCoords)
-        // console.log(existsBoolean)
-        return existsBoolean
-    }
+    
 
     function checkConflictingShips(activeCells) {
         let alreadyUsed = false
         activeCells.forEach((elem) => {
-            if (checkForRepeat(elem.coordinates) === true) {
+            if (checkForRepeat(elem.coordinates, occupiedCells) === true) {
                 alreadyUsed = true
             }
         })
@@ -178,10 +178,18 @@ export const humanShipPlacement = function (humanBoard, ships) {
 }
 
 
-export const computerPlacement = function () {
-    
+export const computerPlacement = function (computerBoard, ships) {
+    // ships are already created in ship-object.js...
+
 }
 
+
+function checkForRepeat(coords, array) {
+    const stringedCoords = JSON.stringify(coords);
+    const existsBoolean = array.some((coord) => JSON.stringify(coord) === stringedCoords)
+    // console.log(existsBoolean)
+    return existsBoolean
+}
 
 function switchPlane(currentPlane) {
     if (currentPlane === 'horizontal') {
