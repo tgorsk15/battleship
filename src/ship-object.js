@@ -43,11 +43,6 @@ export function createFleet() {
  
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat)
 
-    // boardRun.placeHorizontalShip(1, 5, carrier);
-    // boardRun.placeVerticalShip(4,1, battleship)
-    // boardRun.placeHorizontalShip(7, 4, destroyer);
-    // boardRun.placeVerticalShip(7, 8, submarine);
-    // boardRun.placeHorizontalShip(2, 6, patrolBoat);
     console.log(ships);
     return ships
 }
@@ -63,11 +58,6 @@ export function createOppFleet() {
 
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat);
 
-    // boardRun.placeHorizontalShip(1, 1, carrier);
-    // boardRun.placeVerticalShip(4,2, battleship)
-    // boardRun.placeHorizontalShip(6, 6, destroyer);
-    // boardRun.placeVerticalShip(7, 8, submarine);
-    // boardRun.placeHorizontalShip(3, 7, patrolBoat);
     console.log(ships);
     return ships
 }

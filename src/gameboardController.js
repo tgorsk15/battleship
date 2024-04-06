@@ -43,14 +43,13 @@ export function gameBoardController(fleet, name) {
         }
         console.log(ship);
         console.log(ship.name);
+        console.log(ships)
         return ship
     }
 
     function placeVerticalShip(row, col, ship) {
         for (let i = 0; i < ship.length; i++) {
             const newCoords = [row + i, col];
-            // put a check here to see if this conflicts with
-            // any other ship's coords 
             ship.coords.push(newCoords);
         }
         console.log(ship)

@@ -42,15 +42,19 @@ export const resetInterface = function (bodyE, endBox) {
     console.log('reseting all this shit');
     const playerBoards = document.querySelector('.gameboards');
     const dialogueContainer = document.querySelector('.dialogue-container');
-
-    const gameBoardWrappers = document.querySelectorAll('.board-wrapper');
     const dialogueBox = document.querySelector('.dialogue-box');
+    const gameBoardWrappers = document.querySelectorAll('.board-wrapper');
+
+    const rotateShipButton = document.querySelector('.rotate-ship');
+    
     // console.log(playerBoards, dialogueContainer, gameBoardWrappers, dialogueBox)
     console.log(bodyE, endBox)
 
     gameBoardWrappers.forEach((element) => {
         playerBoards.removeChild(element);
     });
+    playerBoards.removeChild(rotateShipButton);
+
     dialogueContainer.removeChild(dialogueBox);
     bodyE.removeChild(endBox);
 
