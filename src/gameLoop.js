@@ -46,9 +46,7 @@ export const resetInterface = function (bodyE, endBox) {
     const gameBoardWrappers = document.querySelectorAll('.board-wrapper');
 
     const rotateShipButton = document.querySelector('.rotate-ship');
-    
-    // console.log(playerBoards, dialogueContainer, gameBoardWrappers, dialogueBox)
-    console.log(bodyE, endBox)
+
 
     gameBoardWrappers.forEach((element) => {
         playerBoards.removeChild(element);

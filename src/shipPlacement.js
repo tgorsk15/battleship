@@ -140,7 +140,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
         // if true, disbale pointer events and run function for
         // placing computer ships
         humanBoard.placeHorizontalShip(cellCoords[0], cellCoords[1], ship);
-        console.log(occupiedCells)
+        console.log(occupiedCells);
     }
 
     function placeVertically(cellCoords, activeCells, ship) {
@@ -190,9 +190,9 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function createShipCoords(ship) {
 
-        // const chosenPlane = choosePlane(planes);
+        const chosenPlane = choosePlane(planes);
         // using to test:
-        const chosenPlane = 'horizontal'
+        // const chosenPlane = 'horizontal'
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
             testHorizontalShip(ship)

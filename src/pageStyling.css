@@ -92,8 +92,8 @@ body {
     border: 1px solid black;
 }
 
-.cell:hover, .cell-c:hover {
-    /* background-color: antiquewhite; */
+.cell-c:hover {
+    background-color: antiquewhite;
 }
 
 
@@ -173,8 +173,23 @@ body {
 .rotate-ship {
     position: absolute;
     top: 300px;
-    right: 40%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     height: 25px;
     width: 60px;
+    border: 2px solid orange;
+}
+
+.start-game-button {
+    position: absolute;
+    top: 350px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 25px;
+    width: 110px;
     border: 2px solid orange;
 }

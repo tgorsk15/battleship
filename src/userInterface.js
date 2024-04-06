@@ -13,6 +13,10 @@ export const domManipulation = function () {
         const rotateShipButton = document.createElement('button');
         appendElement(rotateShipButton, 'rotate-ship', playerBoards)
         rotateShipButton.textContent = 'Rotate';
+
+        const startGameButton = document.createElement('button');
+        appendElement(startGameButton, 'start-game-button', playerBoards);
+        startGameButton.textContent = 'Start Firing!'
     }
 
     function renderGameBoard(boardController, playerName, humanBoard) {
