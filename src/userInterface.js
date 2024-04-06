@@ -10,13 +10,10 @@ export const domManipulation = function () {
     const dialogueContainer = document.querySelector('.dialogue-container')
 
     function renderStart() {
-        const rotateShipButton = document.createElement('button');
-        appendElement(rotateShipButton, 'rotate-ship', playerBoards)
-        rotateShipButton.textContent = 'Rotate';
-
         const startGameButton = document.createElement('button');
         appendElement(startGameButton, 'start-game-button', playerBoards);
         startGameButton.textContent = 'Start Firing!'
+        
     }
 
     function renderGameBoard(boardController, playerName, humanBoard) {
@@ -40,7 +37,10 @@ export const domManipulation = function () {
         buildGrid(gameboard, isComputer);
         
         if (isComputer === false) {
-            console.log('triggered')
+            const rotateShipButton = document.createElement('button');
+            appendElement(rotateShipButton, 'rotate-ship', gameBoardWrapper);
+            rotateShipButton.textContent = 'Rotate';        
+
             setGridTriggers(boardController, humanBoard);
         }
         
