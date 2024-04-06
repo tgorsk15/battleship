@@ -177,9 +177,11 @@ export const humanShipPlacement = function (humanBoard, ships) {
 }
 
 
+
+
 export const computerPlacement = function (computerBoard, ships) {
     const planes = ['horizontal', 'vertical']
-    console.log(computerBoard);
+    const usedCells = [];
     console.log(ships);
 
     for (let i = 0; i < ships.length; i++) {
@@ -189,22 +191,31 @@ export const computerPlacement = function (computerBoard, ships) {
     function createShipCoords(ship) {
         const row = Math.floor(Math.random() * 10) + 1
         const column = Math.floor(Math.random() * 10) + 1
-        const compCoords = [row, column];
+        // const compCoords = [row, column];
 
         const chosenPlane = choosePlane(planes);
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
-            testHorizontalShip()
+            testHorizontalShip(row, column, ship)
         } else if (chosenPlane === 'vertical') {
-            testVerticalShip();
+            testVerticalShip(row, column, ship);
         }
     }
 
-    function testHorizontalShip() {
+    function testHorizontalShip(ship) {
+        const startingCoords = createHorizontalStart(ship)
+        console.log(startingCoords);
+        console.log(ship)
+        for (let i = 0; i < ship.length; i++) {
 
+        }
+        // create ship coords
+        // push to usedCells
+        // check if in usedCells
+        // if false, run placeShip functions
     }
 
-    function testVerticalShip() {
+    function testVerticalShip(row, column, ship) {
 
     }
 
@@ -214,8 +225,19 @@ export const computerPlacement = function (computerBoard, ships) {
         return planes[chosenIndex]
     }
 
+    function createHorizontalStart(ship) {
+        const row = Math.floor(Math.random() * (10 - ship.length)) + 1
+        const column = Math.floor(Math.random() * (10 - ship.length)) + 1
+        const startingCoord = [row, column];
+        return startingCoord
+    }
+
+    function createVerticalStart(ship) {
+
+    }
+
     return {createShipCoords, testHorizontalShip, testVerticalShip,
-        choosePlane}
+        choosePlane, createHorizontalStart, createVerticalStart}
 }
 
 
