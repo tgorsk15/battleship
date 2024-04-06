@@ -2,11 +2,12 @@
 import { Player, userPlayer, computerPlayer } from "./player";
 import { gameBoardController } from "./gameboardController";
 import { createFleet, createOppFleet } from "./ship-object";
-import { domManipulation } from "./userInterface";
+import { domManipulation, dialogueController } from "./userInterface";
 import { humanShipPlacement, computerPlacement } from "./shipPlacement";
 
 export const initializeGame = function createGame() {
     const runDOM = domManipulation();
+
 
     const humanPlayer = new Player('Player 1')
     const humanFleet = createFleet()
@@ -27,7 +28,9 @@ export const initializeGame = function createGame() {
     runDOM.renderGameBoard(computerBoard, humanPlayer.player, humanBoard);
     
     // call render dialogue box here
-    runDOM.renderDialogueBox();
+    const creatDialogue = runDOM.renderDialogueBox();
+    const dialogue = dialogueController()
+    dialogue.placeShipsMessage()
 
     // call computerPlacement to set up computer's chips:
     const computerPlacements = computerPlacement(computerBoard, computerFleet);
@@ -44,8 +47,6 @@ export const resetInterface = function (bodyE, endBox) {
     const dialogueContainer = document.querySelector('.dialogue-container');
     const dialogueBox = document.querySelector('.dialogue-box');
     const gameBoardWrappers = document.querySelectorAll('.board-wrapper');
-
-    const rotateShipButton = document.querySelector('.rotate-ship');
 
 
     gameBoardWrappers.forEach((element) => {

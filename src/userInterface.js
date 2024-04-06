@@ -13,8 +13,8 @@ export const domManipulation = function () {
         const startGameButton = document.createElement('button');
         appendElement(startGameButton, 'start-game-button', playerBoards);
         startGameButton.textContent = 'Start Firing!'
-        // startGameButton.setAttribute('disabled', 'disabled');
         startGameButton.style.display = 'none';
+
     }
 
     function renderGameBoard(boardController, playerName, humanBoard) {
@@ -169,9 +169,10 @@ export const domManipulation = function () {
 
 export const dialogueController = function() {
 
-    // function  placeShipsMessage() {
-
-    // }
+    function  placeShipsMessage() {
+        const textBox1 = document.querySelector('.text-box1');
+        textBox1.textContent = 'Place your ships on the board to the right to begin!'
+    }
 
     function moveResult(status, playerName, coords, ship = null) {
         // need attackStatus, ship name, coordinates
@@ -212,8 +213,6 @@ export const dialogueController = function() {
 
     function endGameMessage(name) {
         const textBox3 = document.querySelector('.text-box3')
-        // maybe put trigger here to make a 'restart game'
-        // button to pop up
         if (name === 'Player 2') {
             textBox3.textContent = 'The enemy fleet has been sank. Excellent work Soldier!'
         } else {
@@ -222,5 +221,6 @@ export const dialogueController = function() {
     }
 
 
-    return {moveResult, sunkShipMessage, endGameMessage}
+    return {placeShipsMessage, moveResult, 
+        sunkShipMessage, endGameMessage}
 }
