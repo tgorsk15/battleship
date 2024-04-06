@@ -29,9 +29,13 @@ export const initializeGame = function createGame() {
     // call render dialogue box here
     runDOM.renderDialogueBox();
 
+    // call computerPlacement to set up computer's chips:
+    const computerPlacements = computerPlacement(computerBoard, computerFleet);
+    
     // call shipPlacement function here for humanBoard
     const humanPlacement = humanShipPlacement(humanBoard, humanFleet);
-    const computerPlacements = computerPlacement(computerBoard, computerFleet);
+
+   
 }
 
 export const resetInterface = function (bodyE, endBox) {

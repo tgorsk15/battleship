@@ -173,14 +173,49 @@ export const humanShipPlacement = function (humanBoard, ships) {
         })
     }
 
-    return { cellHover, placeHorizontally, checkConflictingShips,
-        checkForRepeat }
+    return { cellHover, placeHorizontally, checkConflictingShips }
 }
 
 
 export const computerPlacement = function (computerBoard, ships) {
-    // ships are already created in ship-object.js...
+    const planes = ['horizontal', 'vertical']
+    console.log(computerBoard);
+    console.log(ships);
 
+    for (let i = 0; i < ships.length; i++) {
+        createShipCoords(ships[i]);
+    }
+
+    function createShipCoords(ship) {
+        const row = Math.floor(Math.random() * 10) + 1
+        const column = Math.floor(Math.random() * 10) + 1
+        const compCoords = [row, column];
+
+        const chosenPlane = choosePlane(planes);
+        console.log(chosenPlane)
+        if (chosenPlane === 'horizontal') {
+            testHorizontalShip()
+        } else if (chosenPlane === 'vertical') {
+            testVerticalShip();
+        }
+    }
+
+    function testHorizontalShip() {
+
+    }
+
+    function testVerticalShip() {
+
+    }
+
+    function choosePlane(planes) {
+        const chosenIndex = Math.floor(Math.random() * planes.length);
+        console.log(planes[chosenIndex]);
+        return planes[chosenIndex]
+    }
+
+    return {createShipCoords, testHorizontalShip, testVerticalShip,
+        choosePlane}
 }
 
 

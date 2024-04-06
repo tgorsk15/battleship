@@ -2,6 +2,7 @@
 /* eslint-disable import/prefer-default-export */
 import { gameBoardController } from "./gameboardController";
 
+
 export class Ship {
     constructor(length, name, hits, isSunk, coords) {
         this.length = length;
