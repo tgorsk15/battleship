@@ -190,7 +190,7 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function createShipCoords(ship) {
 
-        // let chosenPlane = choosePlane(planes);
+        // const chosenPlane = choosePlane(planes);
         // using to test:
         const chosenPlane = 'vertical'
         console.log(chosenPlane)
@@ -207,17 +207,26 @@ export const computerPlacement = function (computerBoard, ships) {
         for (let i = 0; i < ship.length; i++) {
 
         }
-        // create ship coords
-        // push to usedCells
-        // check if in usedCells
-        // if false, run placeShip functions
+
     }
 
     function testVerticalShip(ship) {
         const startingCoords = createVerticalStart(ship)
-        console.log(startingCoords);
-        for (let i = 0; i < ship.length; i++) {
-
+        // console.log(startingCoords);
+        usedCells.push(startingCoords);
+        for (let i = 1; i < ship.length; i++) {
+            const newCoords = [startingCoords[0] + i, startingCoords[1]];
+            const repeat = checkForRepeat(newCoords, usedCells)
+            if (repeat === false) {
+              usedCells.push(newCoords);
+              if (i + 1 === ship.length) {
+                computerBoard.placeVerticalShip(startingCoords[0], startingCoords[1], ship);
+              }
+              
+            } else if (repeat === true) {
+                testVerticalShip(ship)
+            }
+            
         }
     }
 
@@ -228,7 +237,6 @@ export const computerPlacement = function (computerBoard, ships) {
     }
 
     function createHorizontalStart(ship) {
-        console.log(ship.name);
         const row = Math.floor(Math.random() * 10) + 1
         const column = Math.floor(Math.random() * (10 - ship.length)) + 1
         const startingCoord = [row, column];
@@ -236,7 +244,6 @@ export const computerPlacement = function (computerBoard, ships) {
     }
 
     function createVerticalStart(ship) {
-        console.log(ship.name);
         const row = Math.floor(Math.random() * (10 - ship.length)) + 1
         const column = Math.floor(Math.random() * 10) + 1
         const startingCoord = [row, column];
@@ -251,7 +258,7 @@ export const computerPlacement = function (computerBoard, ships) {
 function checkForRepeat(coords, array) {
     const stringedCoords = JSON.stringify(coords);
     const existsBoolean = array.some((coord) => JSON.stringify(coord) === stringedCoords)
-    // console.log(existsBoolean)
+    console.log(existsBoolean)
     return existsBoolean
 }
 

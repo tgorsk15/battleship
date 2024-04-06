@@ -41,7 +41,8 @@ export function gameBoardController(fleet, name) {
             const newCoords = [row, col + i];
             ship.coords.push(newCoords)
         }
-        console.log(ships);
+        console.log(ship);
+        console.log(ship.name);
         return ship
     }
 
@@ -52,6 +53,8 @@ export function gameBoardController(fleet, name) {
             // any other ship's coords 
             ship.coords.push(newCoords);
         }
+        console.log(ship)
+        console.log(ships)
         return ship
     }
     
