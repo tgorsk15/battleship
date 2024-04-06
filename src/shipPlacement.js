@@ -189,23 +189,21 @@ export const computerPlacement = function (computerBoard, ships) {
     }
 
     function createShipCoords(ship) {
-        const row = Math.floor(Math.random() * 10) + 1
-        const column = Math.floor(Math.random() * 10) + 1
-        // const compCoords = [row, column];
 
-        const chosenPlane = choosePlane(planes);
+        let chosenPlane = choosePlane(planes);
+        // using to test:
+        chosenPlane = 'horizontal'
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
-            testHorizontalShip(row, column, ship)
+            testHorizontalShip(ship)
         } else if (chosenPlane === 'vertical') {
-            testVerticalShip(row, column, ship);
+            testVerticalShip(ship);
         }
     }
 
     function testHorizontalShip(ship) {
         const startingCoords = createHorizontalStart(ship)
         console.log(startingCoords);
-        console.log(ship)
         for (let i = 0; i < ship.length; i++) {
 
         }
@@ -226,7 +224,8 @@ export const computerPlacement = function (computerBoard, ships) {
     }
 
     function createHorizontalStart(ship) {
-        const row = Math.floor(Math.random() * (10 - ship.length)) + 1
+        console.log(ship.name);
+        const row = Math.floor(Math.random() * 10) + 1
         const column = Math.floor(Math.random() * (10 - ship.length)) + 1
         const startingCoord = [row, column];
         return startingCoord
