@@ -43,6 +43,8 @@ export const domManipulation = function () {
             rotateShipButton.textContent = 'Rotate';        
 
             setGridTriggers(boardController, humanBoard);
+        } else {
+            gameboard.style.pointerEvents = 'none'
         }
         
     }

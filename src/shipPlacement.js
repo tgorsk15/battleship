@@ -10,6 +10,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
     // memory storage for where cells can't be used again
     const rotateButton = document.querySelector('.rotate-ship');
     const startButton = document.querySelector('.start-game-button');
+    const gameBoard = document.querySelector('.gameboard');
     const occupiedCells = [];
 
     // sets plane
@@ -169,6 +170,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
         startButton.style.display = 'block'; 
         startButton.addEventListener('click', () => {
             console.log('start!');
+            gameBoard.style.pointerEvents = 'auto';
         })
     }
 
@@ -184,7 +186,6 @@ export const humanShipPlacement = function (humanBoard, ships) {
 export const computerPlacement = function (computerBoard, ships) {
     const planes = ['horizontal', 'vertical']
     const usedCells = [];
-    console.log(ships);
 
     for (let i = 0; i < ships.length; i++) {
         createShipCoords(ships[i]);
@@ -193,8 +194,6 @@ export const computerPlacement = function (computerBoard, ships) {
     function createShipCoords(ship) {
 
         const chosenPlane = choosePlane(planes);
-        // using to test:
-        // const chosenPlane = 'horizontal'
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
             testHorizontalShip(ship)

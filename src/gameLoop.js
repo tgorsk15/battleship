@@ -51,7 +51,6 @@ export const resetInterface = function (bodyE, endBox) {
     gameBoardWrappers.forEach((element) => {
         playerBoards.removeChild(element);
     });
-    playerBoards.removeChild(rotateShipButton);
 
     dialogueContainer.removeChild(dialogueBox);
     bodyE.removeChild(endBox);
