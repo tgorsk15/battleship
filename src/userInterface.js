@@ -13,7 +13,8 @@ export const domManipulation = function () {
         const startGameButton = document.createElement('button');
         appendElement(startGameButton, 'start-game-button', playerBoards);
         startGameButton.textContent = 'Start Firing!'
-        
+        // startGameButton.setAttribute('disabled', 'disabled');
+        startGameButton.style.display = 'none';
     }
 
     function renderGameBoard(boardController, playerName, humanBoard) {
