@@ -134,7 +134,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
         activeCells.forEach((elem) => {
             console.log(elem.coordinates);
             occupiedCells.push(elem.coordinates);
-            elem.classList.add('placed')
+            elem.classList.add('placed');
         });
         humanBoard.placeHorizontalShip(cellCoords[0], cellCoords[1], ship);
         console.log(occupiedCells);
@@ -144,7 +144,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
         activeCells.forEach((elem) => {
             console.log(elem.coordinates);
             occupiedCells.push(elem.coordinates);
-            elem.classList.add('placed')
+            elem.classList.add('placed');
         });
         humanBoard.placeVerticalShip(cellCoords[0], cellCoords[1], ship);
         console.log(occupiedCells)
@@ -173,9 +173,9 @@ export const humanShipPlacement = function (humanBoard, ships) {
         startButton.style.display = 'block'; 
         startButton.addEventListener('click', () => {
             dialogueRun.beginAttackMessage();
-            console.log('start!');
             gameBoard.style.pointerEvents = 'auto';
             playerBoards.removeChild(startButton);
+            rotateButton.style.display = 'none';
         })
     }
 
