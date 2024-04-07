@@ -104,6 +104,12 @@ body {
     background-color: antiquewhite;
 }
 
+/* icons */
+.attack-icon {
+    object-fit: cover;
+    height: 100%;
+}
+
 
 /* styling for dialogue box */
 .dialogue-container {

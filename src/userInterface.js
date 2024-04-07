@@ -95,6 +95,7 @@ export const domManipulation = function () {
         // registers that teh grid spot was used, and displays
         // either a hit or miss
         const attackIcon = new Image();
+        attackIcon.classList.add('attack-icon');
 
         if (name === 'Player 2') {
             const usedCell = document.getElementById(
