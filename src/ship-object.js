@@ -1,7 +1,5 @@
 /* eslint-disable no-else-return */
 /* eslint-disable import/prefer-default-export */
-import { gameBoardController } from "./gameboardController";
-
 
 export class Ship {
     constructor(length, name, hits, isSunk, coords) {
@@ -30,7 +28,7 @@ export class Ship {
 
 }
 
-const boardRun = gameBoardController();
+
 
 export function createFleet() {
     const ships = []

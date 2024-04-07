@@ -142,16 +142,10 @@ export const domManipulation = function () {
 
 
     function renderEndGame() {
-        const bodyElement = document.body
-
-        // const endGameBox = document.createElement('div');
-        // appendElement(endGameBox, 'end-game-box', bodyElement);
-
-        // const endGameIcon = document.createElement('div');
-        // appendElement(endGameIcon, 'end-game-icon', endGameBox);
 
         const resetGameButton = document.createElement('button');
         appendElement(resetGameButton, 'reset-game-button', playerBoards);
+        resetGameButton.textContent = 'Play Again?'
 
         resetGameButton.addEventListener('click', () => {
             resetInterface(resetGameButton);
