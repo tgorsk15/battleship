@@ -43,6 +43,7 @@ export function gameBoardController(fleet, name) {
         }
         console.log(ship);
         console.log(ship.name);
+        console.log(ship.coords);
         console.log(ships)
         return ship
     }
@@ -54,6 +55,7 @@ export function gameBoardController(fleet, name) {
         }
         console.log(ship)
         console.log(ships)
+        console.log(ship.coords);
         return ship
     }
     

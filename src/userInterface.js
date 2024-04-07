@@ -1,4 +1,7 @@
 /* eslint-disable import/prefer-default-export */
+import hitIcon from "./icons/hit.png";
+import missIcon from "./icons/miss.png";
+
 import { computerPlayer } from "./player";
 import { resetInterface } from "./gameLoop";
 
@@ -89,27 +92,28 @@ export const domManipulation = function () {
     function useGridSpot(coords, status, name) {
         // registers that teh grid spot was used, and displays
         // either a hit or miss
+        const attackIcon = new Image();
 
         if (name === 'Player 2') {
-            // console.log(status);
             const usedCell = document.getElementById(
                 `${coords[0]} ${coords[1]}c`)
 
+            usedCell.appendChild(attackIcon);
             if (status === 'hit') {
-                usedCell.textContent = 'X'
+                attackIcon.src = hitIcon
             } else if (status === 'miss') {
-                usedCell.textContent = 'O'
+                attackIcon.src = missIcon
             }
 
         } else {
-            // console.log(status);
             const usedCell = document.getElementById(
                 `${coords[0]} ${coords[1]}h`)
-
+            
+            usedCell.appendChild(attackIcon);
             if (status === 'hit') {
-                usedCell.textContent = 'X'
+                attackIcon.src = hitIcon
             } else if (status === 'miss') {
-                usedCell.textContent = 'O'
+                attackIcon.src = missIcon
             }
         }
     }

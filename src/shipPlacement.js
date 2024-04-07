@@ -196,9 +196,7 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function createShipCoords(ship) {
 
-        // const chosenPlane = choosePlane(planes);
-        // test:
-        const chosenPlane = 'vertical';
+        const chosenPlane = choosePlane(planes);
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
             testHorizontalShip(ship)
@@ -209,8 +207,17 @@ export const computerPlacement = function (computerBoard, ships) {
 
 
     function testHorizontalShip(ship) {
-        const startingCoords = createHorizontalStart(ship)
-        usedCells.push(startingCoords);
+        let startingCoords = createHorizontalStart(ship)
+
+        // initial check of repeat:
+        let firstRepeat = checkForRepeat(startingCoords, usedCells)
+        while (firstRepeat === true) {
+            console.log('need new start')
+            startingCoords = createHorizontalStart(ship);
+            firstRepeat = checkForRepeat(startingCoords, usedCells)
+        }
+        usedCells.push(startingCoords); 
+        
         let repeatDetect = false;
         for (let i = 1; i < ship.length; i++) {
             const newCoords = [startingCoords[0], startingCoords[1] + i];
@@ -234,8 +241,17 @@ export const computerPlacement = function (computerBoard, ships) {
 
 
     function testVerticalShip(ship) {
-        const startingCoords = createVerticalStart(ship)
+        let startingCoords = createVerticalStart(ship)
+
+        // initial check of repeat:
+        let firstRepeat = checkForRepeat(startingCoords, usedCells)
+        while (firstRepeat === true) {
+            console.log('need new start')
+            startingCoords = createVerticalStart(ship);
+            firstRepeat = checkForRepeat(startingCoords, usedCells)
+        }
         usedCells.push(startingCoords);
+
         let repeatDetect = false;
         for (let i = 1; i < ship.length; i++) {
             const newCoords = [startingCoords[0] + i, startingCoords[1]];
@@ -259,7 +275,6 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function choosePlane(planes) {
         const chosenIndex = Math.floor(Math.random() * planes.length);
-        console.log(planes[chosenIndex]);
         return planes[chosenIndex]
     }
 
