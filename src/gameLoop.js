@@ -9,7 +9,7 @@ export const initializeGame = function createGame() {
     const runDOM = domManipulation();
 
 
-    const humanPlayer = new Player('Player 1')
+    const humanPlayer = new Player('User')
     const humanFleet = createFleet()
     console.log(humanFleet)
     humanPlayer.gameBoard = gameBoardController(humanFleet, humanPlayer.player);
@@ -17,7 +17,7 @@ export const initializeGame = function createGame() {
     humanBoard.createBoard();
     
 
-    const AIplayer = new Player('Player 2');
+    const AIplayer = new Player('Enemy');
     const computerFleet = createOppFleet();
     AIplayer.gameBoard = gameBoardController(computerFleet, AIplayer.player);
     const computerBoard = AIplayer.gameBoard;
@@ -41,7 +41,7 @@ export const initializeGame = function createGame() {
    
 }
 
-export const resetInterface = function (bodyE, endBox) {
+export const resetInterface = function (resetButton) {
     console.log('reseting all this shit');
     const playerBoards = document.querySelector('.gameboards');
     const dialogueContainer = document.querySelector('.dialogue-container');
@@ -54,7 +54,7 @@ export const resetInterface = function (bodyE, endBox) {
     });
 
     dialogueContainer.removeChild(dialogueBox);
-    bodyE.removeChild(endBox);
+    playerBoards.removeChild(resetButton)
 
     initializeGame();
 

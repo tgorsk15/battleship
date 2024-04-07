@@ -21,8 +21,6 @@ export function gameBoardController(fleet, name) {
     const board = [];
     const ships = fleet;
 
-    // console.log(ships);
-
 
     function createBoard() {
         for (let i = 0; i < 10; i++) {

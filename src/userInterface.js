@@ -22,7 +22,7 @@ export const domManipulation = function () {
 
     function renderGameBoard(boardController, playerName, humanBoard) {
         let isComputer = false;
-        if (playerName === 'Player 2') {
+        if (playerName === 'Enemy') {
             isComputer = true
         }
         console.log(isComputer);
@@ -97,7 +97,7 @@ export const domManipulation = function () {
         const attackIcon = new Image();
         attackIcon.classList.add('attack-icon');
 
-        if (name === 'Player 2') {
+        if (name === 'Enemy') {
             const usedCell = document.getElementById(
                 `${coords[0]} ${coords[1]}c`)
 
@@ -144,17 +144,17 @@ export const domManipulation = function () {
     function renderEndGame() {
         const bodyElement = document.body
 
-        const endGameBox = document.createElement('div');
-        appendElement(endGameBox, 'end-game-box', bodyElement);
+        // const endGameBox = document.createElement('div');
+        // appendElement(endGameBox, 'end-game-box', bodyElement);
 
-        const endGameIcon = document.createElement('div');
-        appendElement(endGameIcon, 'end-game-icon', endGameBox);
+        // const endGameIcon = document.createElement('div');
+        // appendElement(endGameIcon, 'end-game-icon', endGameBox);
 
         const resetGameButton = document.createElement('button');
-        appendElement(resetGameButton, 'reset-game-button', endGameBox);
+        appendElement(resetGameButton, 'reset-game-button', playerBoards);
 
         resetGameButton.addEventListener('click', () => {
-            resetInterface(bodyElement, endGameBox);
+            resetInterface(resetGameButton);
         })
     }
 
@@ -191,7 +191,7 @@ export const dialogueController = function() {
         const textBox1 = document.querySelector('.text-box1');
         const textBox2 = document.querySelector('.text-box2');
         console.log('dialogue recorded')
-        if (playerName !== 'Player 2') {
+        if (playerName !== 'Enemy') {
             if (status === 'hit') {
                 textBox2.textContent = `The enemy has hit your ${ship.name}
                 at row: ${coords[0]} column: ${coords[1]}!`
@@ -200,7 +200,7 @@ export const dialogueController = function() {
                 ${coords[0]} column: ${coords[1]} and missed!`
             }
 
-        } else if (playerName === 'Player 2') {
+        } else if (playerName === 'Enemy') {
             if (status === 'hit') {
                 textBox1.textContent = `You hit the enemy's ${ship.name}
                 at row: ${coords[0]} column: ${coords[1]}!`
@@ -215,9 +215,9 @@ export const dialogueController = function() {
         const textBox1 = document.querySelector('.text-box1');
         const textBox2 = document.querySelector('.text-box2');
         console.log(ship, name)
-        if (name !== 'Player 2') {
+        if (name !== 'Enemy') {
             textBox2.textContent = `Your ${ship.name} has been sunk!!`
-        } else if (name === 'Player 2') {
+        } else if (name === 'Enemy') {
             textBox1.textContent = `You sunk the enemy's ${ship.name}!!`
         }
 
@@ -225,7 +225,7 @@ export const dialogueController = function() {
 
     function endGameMessage(name) {
         const textBox3 = document.querySelector('.text-box3')
-        if (name === 'Player 2') {
+        if (name === 'Enemy') {
             textBox3.textContent = 'The enemy fleet has been sank. Excellent work Soldier!'
         } else {
             textBox3.textContent = 'We have lost our fleet and been defeated. Abort the mission!'
