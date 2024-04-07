@@ -196,7 +196,9 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function createShipCoords(ship) {
 
-        const chosenPlane = choosePlane(planes);
+        // const chosenPlane = choosePlane(planes);
+        // test:
+        const chosenPlane = 'horizontal';
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
             testHorizontalShip(ship)
@@ -205,24 +207,49 @@ export const computerPlacement = function (computerBoard, ships) {
         }
     }
 
+    // function testHorizontalShip(ship) {
+    //     const startingCoords = createHorizontalStart(ship)
+    //     usedCells.push(startingCoords);
+    //     for (let i = 1; i < ship.length; i++) {
+    //         const newCoords = [startingCoords[0], startingCoords[1] + i];
+    //         const repeat = checkForRepeat(newCoords, usedCells)
+    //         if (repeat === false) {
+    //             usedCells.push(newCoords);
+    //             if (i + 1 === ship.length) {
+    //                 computerBoard.placeHorizontalShip(startingCoords[0], startingCoords[1], ship);
+    //             }
+              
+    //         } else if (repeat === true) {
+    //             testHorizontalShip(ship)
+    //         }
+    //     }
+
+    // }
+
     function testHorizontalShip(ship) {
         const startingCoords = createHorizontalStart(ship)
         usedCells.push(startingCoords);
+        let repeatDetect = false;
         for (let i = 1; i < ship.length; i++) {
             const newCoords = [startingCoords[0], startingCoords[1] + i];
             const repeat = checkForRepeat(newCoords, usedCells)
             if (repeat === false) {
                 usedCells.push(newCoords);
-                if (i + 1 === ship.length) {
-                    computerBoard.placeHorizontalShip(startingCoords[0], startingCoords[1], ship);
-                }
               
             } else if (repeat === true) {
-                testHorizontalShip(ship)
+                repeatDetect = true
+                break
             }
         }
 
+        if (repeatDetect === false) {
+            computerBoard.placeHorizontalShip(startingCoords[0], startingCoords[1], ship);
+        } else if (repeatDetect === true) {
+            testHorizontalShip(ship);
+        }
+
     }
+
 
     function testVerticalShip(ship) {
         const startingCoords = createVerticalStart(ship)
