@@ -174,6 +174,11 @@ export const dialogueController = function() {
         textBox1.textContent = 'Place your ships on the board to the right to begin!'
     }
 
+    function beginAttackMessage() {
+        const textBox1 = document.querySelector('.text-box1');
+        textBox1.textContent = 'Ready to Attack!!'
+    }
+
     function moveResult(status, playerName, coords, ship = null) {
         // need attackStatus, ship name, coordinates
         const textBox1 = document.querySelector('.text-box1');
@@ -221,6 +226,6 @@ export const dialogueController = function() {
     }
 
 
-    return {placeShipsMessage, moveResult, 
+    return {placeShipsMessage, beginAttackMessage, moveResult, 
         sunkShipMessage, endGameMessage}
 }

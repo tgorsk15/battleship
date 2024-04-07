@@ -1,16 +1,18 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable import/prefer-default-export */
 
-// have to add buttons to UI to switch betwen horizontal and vertical
-// have to make a start button that user can press when all 
-// ships are placed
+// rotateButton allows players to rotate ships during placement phase
+// startButton allows player to attack when all ships have been placed
+import { dialogueController } from "./userInterface";
 
 
 export const humanShipPlacement = function (humanBoard, ships) {
-    // memory storage for where cells can't be used again
     const rotateButton = document.querySelector('.rotate-ship');
     const startButton = document.querySelector('.start-game-button');
     const gameBoard = document.querySelector('.gameboard');
+    const dialogueRun = dialogueController();
+
+    // memory storage for where cells can't be used again
     const occupiedCells = [];
 
     // sets plane
@@ -169,6 +171,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
     function startButtonEmerge() {
         startButton.style.display = 'block'; 
         startButton.addEventListener('click', () => {
+            dialogueRun.beginAttackMessage();
             console.log('start!');
             gameBoard.style.pointerEvents = 'auto';
         })
@@ -204,7 +207,6 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function testHorizontalShip(ship) {
         const startingCoords = createHorizontalStart(ship)
-        // console.log(startingCoords);
         usedCells.push(startingCoords);
         for (let i = 1; i < ship.length; i++) {
             const newCoords = [startingCoords[0], startingCoords[1] + i];
@@ -224,7 +226,6 @@ export const computerPlacement = function (computerBoard, ships) {
 
     function testVerticalShip(ship) {
         const startingCoords = createVerticalStart(ship)
-        // console.log(startingCoords);
         usedCells.push(startingCoords);
         for (let i = 1; i < ship.length; i++) {
             const newCoords = [startingCoords[0] + i, startingCoords[1]];

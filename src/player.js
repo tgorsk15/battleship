@@ -1,12 +1,10 @@
 // create both the user player and the computer player here
 
 // computer player has attack coordinates generator function
-import { gameBoardController } from "./gameboardController";
 
 export class Player {
     constructor(player, gameBoard) {
         this.player = player;
-        // this.playerShips = []
         this.gameBoard= null
     }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Player, userPlayer, computerPlayer } from "./player";
+import { Player } from "./player";
 import { gameBoardController } from "./gameboardController";
 import { createFleet, createOppFleet } from "./ship-object";
 import { domManipulation, dialogueController } from "./userInterface";
