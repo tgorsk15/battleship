@@ -46,6 +46,7 @@ export const domManipulation = function () {
             rotateShipButton.textContent = 'Rotate';        
 
             setGridTriggers(boardController, humanBoard);
+
         } else {
             gameboard.style.pointerEvents = 'none'
         }
@@ -79,6 +80,7 @@ export const domManipulation = function () {
             cell.addEventListener('click', () => {
                 console.log(cell.coordinates);
                 computerBoardController.recieveAttack(cell.coordinates);
+                cell.style.pointerEvents = 'none';
 
                 // trigger computer's attack in response
                 console.log(humanBoardController);

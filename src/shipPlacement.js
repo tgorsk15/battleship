@@ -9,6 +9,7 @@ import { dialogueController } from "./userInterface";
 export const humanShipPlacement = function (humanBoard, ships) {
     const rotateButton = document.querySelector('.rotate-ship');
     const startButton = document.querySelector('.start-game-button');
+    const playerBoards = document.querySelector('.gameboards');
     const gameBoard = document.querySelector('.gameboard');
     const dialogueRun = dialogueController();
 
@@ -174,6 +175,7 @@ export const humanShipPlacement = function (humanBoard, ships) {
             dialogueRun.beginAttackMessage();
             console.log('start!');
             gameBoard.style.pointerEvents = 'auto';
+            playerBoards.removeChild(startButton);
         })
     }
 
