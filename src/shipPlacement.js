@@ -198,7 +198,7 @@ export const computerPlacement = function (computerBoard, ships) {
 
         // const chosenPlane = choosePlane(planes);
         // test:
-        const chosenPlane = 'horizontal';
+        const chosenPlane = 'vertical';
         console.log(chosenPlane)
         if (chosenPlane === 'horizontal') {
             testHorizontalShip(ship)
@@ -207,24 +207,6 @@ export const computerPlacement = function (computerBoard, ships) {
         }
     }
 
-    // function testHorizontalShip(ship) {
-    //     const startingCoords = createHorizontalStart(ship)
-    //     usedCells.push(startingCoords);
-    //     for (let i = 1; i < ship.length; i++) {
-    //         const newCoords = [startingCoords[0], startingCoords[1] + i];
-    //         const repeat = checkForRepeat(newCoords, usedCells)
-    //         if (repeat === false) {
-    //             usedCells.push(newCoords);
-    //             if (i + 1 === ship.length) {
-    //                 computerBoard.placeHorizontalShip(startingCoords[0], startingCoords[1], ship);
-    //             }
-              
-    //         } else if (repeat === true) {
-    //             testHorizontalShip(ship)
-    //         }
-    //     }
-
-    // }
 
     function testHorizontalShip(ship) {
         const startingCoords = createHorizontalStart(ship)
@@ -235,7 +217,7 @@ export const computerPlacement = function (computerBoard, ships) {
             const repeat = checkForRepeat(newCoords, usedCells)
             if (repeat === false) {
                 usedCells.push(newCoords);
-              
+                
             } else if (repeat === true) {
                 repeatDetect = true
                 break
@@ -254,19 +236,24 @@ export const computerPlacement = function (computerBoard, ships) {
     function testVerticalShip(ship) {
         const startingCoords = createVerticalStart(ship)
         usedCells.push(startingCoords);
+        let repeatDetect = false;
         for (let i = 1; i < ship.length; i++) {
             const newCoords = [startingCoords[0] + i, startingCoords[1]];
             const repeat = checkForRepeat(newCoords, usedCells)
             if (repeat === false) {
               usedCells.push(newCoords);
-              if (i + 1 === ship.length) {
-                computerBoard.placeVerticalShip(startingCoords[0], startingCoords[1], ship);
-              }
               
             } else if (repeat === true) {
-                testVerticalShip(ship)
+                repeatDetect = true
+                break
             }
             
+        }
+
+        if (repeatDetect === false) {
+            computerBoard.placeVerticalShip(startingCoords[0], startingCoords[1], ship);
+        } else if (repeatDetect === true) {
+            testVerticalShip(ship);
         }
     }
 
