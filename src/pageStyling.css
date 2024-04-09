@@ -31,8 +31,8 @@ body {
 
 .game-title {
     font-size: 67px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 17px;
 }
 
 .gameboards {
@@ -52,6 +52,7 @@ body {
 }
 
 .dialogue-box {
+    margin-top: 8px;
     height: 20vh;
     width: 50vw;
     background-color: rgb(77, 134, 77);
@@ -63,8 +64,11 @@ body {
     position: relative;
     height: 100%;
     width: 400px;
-    background-color: bisque;
+    background: rgb(128, 0, 128, 0.4);
+    border: 5px solid rgb(128, 0, 128);
     padding: 0 15px;
+    padding-bottom: 7px;
+    border-radius: 25px;
 }
 
 .board-title {
@@ -83,14 +87,14 @@ body {
     display: flex;
     height: 10%;
     width: 100%;
-    background-color: pink;
+    /* background-color: pink; */
 }
 
 .cell {
     width: 100%;
     margin: 0px;
     aspect-ratio: 1;
-    background-color: rgb(221, 241, 241);
+    background-color: rgb(221, 241, 241, 0.5);
     border: 1px solid black;
 }
 
@@ -98,12 +102,12 @@ body {
     width: 100%;
     margin: 0px;
     aspect-ratio: 1;
-    background-color: rgb(221, 241, 241);
+    background-color: rgb(221, 241, 241, 0.5);
     border: 1px solid black;
 }
 
 .cell-c:hover {
-    background-color: antiquewhite;
+    background-color: rgb(117, 156, 211);
 }
 
 /* icons */
@@ -127,9 +131,12 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 20vh;
+    height: 18vh;
     width: 45vw;
-    background-color: rgb(77, 134, 77);
+    background-color: rgb(72, 61, 139, 0.8);
+    border: 5px solid rgb(91, 22, 91, 1);
+    border-radius: 25px;
+    margin-top: 20px;
 }
 
 .text-box1, .text-box2, .text-box3 {
@@ -171,15 +178,15 @@ a {
 
 /* styling for ship Placement */
 .valid-placement {
-    background-color: rgb(110, 189, 110);
+    background-color: rgb(110, 189, 110, 1);
 }
 
 .invalid-placement {
-    background-color: rgb(249, 116, 116);
+    background-color: rgb(249, 116, 116, 1);
 }
 
 .placed {
-    background-color: rgb(76, 76, 110);
+    background-color: rgb(214, 100, 166);
 }
 
 .rotate-ship {
@@ -188,7 +195,10 @@ a {
     right: 20px;
     height: 25px;
     width: 60px;
-    /* border: 2px solid orange; */
+    background-color: rgb(221, 241, 241, 1);
+    opacity: 1;
+    border-radius: 20px;
+    border: none;
 }
 
 .start-game-button {

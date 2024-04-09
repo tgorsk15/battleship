@@ -181,10 +181,9 @@ export const dialogueController = function() {
     }
 
     function moveResult(status, playerName, coords, ship = null) {
-        // need attackStatus, ship name, coordinates
         const textBox1 = document.querySelector('.text-box1');
         const textBox2 = document.querySelector('.text-box2');
-        console.log('dialogue recorded')
+
         if (playerName !== 'Enemy') {
             if (status === 'hit') {
                 textBox2.textContent = `The enemy has hit your ${ship.name}

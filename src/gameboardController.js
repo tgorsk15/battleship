@@ -3,15 +3,8 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
 /* eslint-disable import/prefer-default-export */
-
-// gameBoard should check if a game is over by seeing if the
-// length of "ships" is zero (checkAllSunk)
-
-// placing ships vertically... possible idea: have a column number (e.g 3)
-// that you use to select the corresponding array item in each
-// of the arrays that represents a row on the board
-import { Ship, createFleet } from "./ship-object"
 import { domManipulation, dialogueController } from "./userInterface";
+
 
 const runDOM = domManipulation();
 const dialogueRefresh = dialogueController();
