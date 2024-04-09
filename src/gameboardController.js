@@ -23,7 +23,7 @@ export function gameBoardController(fleet, name) {
                 board[i][j] = false
             }
         }
-        console.log(board);
+        // console.log(board);
         return board
     }
 
@@ -32,10 +32,8 @@ export function gameBoardController(fleet, name) {
             const newCoords = [row, col + i];
             ship.coords.push(newCoords)
         }
-        console.log(ship);
         console.log(ship.name);
         console.log(ship.coords);
-        console.log(ships)
         return ship
     }
 
@@ -44,8 +42,7 @@ export function gameBoardController(fleet, name) {
             const newCoords = [row + i, col];
             ship.coords.push(newCoords);
         }
-        console.log(ship)
-        console.log(ships)
+        console.log(ship.name);
         console.log(ship.coords);
         return ship
     }
@@ -69,7 +66,6 @@ export function gameBoardController(fleet, name) {
                 if (coord[0] === coords[0] && coord[1] === coords[1]) {
                     console.log('hit');
                     attackStatus = 'hit'
-                    console.log(attackStatus)
                     ships[i].hit();
                     updateBoardSpot(coords);
                     dialogueRefresh.moveResult(attackStatus,
@@ -95,7 +91,6 @@ export function gameBoardController(fleet, name) {
     }
 
     function checkAllSunk() {
-        console.log(ships);
         if (ships.length === 0) {
             dialogueRefresh.endGameMessage(playerName)
             endGame()
@@ -107,14 +102,12 @@ export function gameBoardController(fleet, name) {
 
     function updateBoardSpot(coords, attackStatus) {
         board[coords[0] - 1][coords[1] - 1] = true;
-        // console.log(board)
         runDOM.useGridSpot(coords, attackStatus, playerName)
         return board
     }
 
     function checkIfUsed(coords) {
         if (board[coords[0] - 1][coords[1] - 1] === true) {
-            // console.log('already used')
             return true
         }
         return false
@@ -122,15 +115,10 @@ export function gameBoardController(fleet, name) {
     }
 
     function endGame() {
-        // want to disable both gameBoards
-        // want to make the restart button appear
-        console.log('ending game');
+        // disable gameBoards and trigger restart button
         runDOM.freezeGrid();
         runDOM.renderEndGame();
     }
-    // likely will have to implement check to make sure a ship can
-    // be placed with no overlap
-
 
     return { createBoard, placeHorizontalShip, placeVerticalShip, recieveAttack,
     checkAllSunk, updateBoardSpot, checkIfUsed, endGame }

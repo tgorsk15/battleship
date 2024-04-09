@@ -214,7 +214,6 @@ export const computerPlacement = function (computerBoard, ships) {
         // initial check of repeat:
         let firstRepeat = checkForRepeat(startingCoords, usedCells)
         while (firstRepeat === true) {
-            console.log('need new start')
             startingCoords = createHorizontalStart(ship);
             firstRepeat = checkForRepeat(startingCoords, usedCells)
         }
@@ -248,7 +247,6 @@ export const computerPlacement = function (computerBoard, ships) {
         // initial check of repeat:
         let firstRepeat = checkForRepeat(startingCoords, usedCells)
         while (firstRepeat === true) {
-            console.log('need new start')
             startingCoords = createVerticalStart(ship);
             firstRepeat = checkForRepeat(startingCoords, usedCells)
         }

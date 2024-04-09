@@ -25,7 +25,6 @@ export const domManipulation = function () {
         if (playerName === 'Enemy') {
             isComputer = true
         }
-        console.log(isComputer);
 
         const gameBoardWrapper = document.createElement('div');
         appendElement(gameBoardWrapper, 'board-wrapper', playerBoards)
@@ -78,12 +77,10 @@ export const domManipulation = function () {
         const cells = document.querySelectorAll('.cell-c');
         cells.forEach((cell) => {
             cell.addEventListener('click', () => {
-                console.log(cell.coordinates);
                 computerBoardController.recieveAttack(cell.coordinates);
                 cell.style.pointerEvents = 'none';
 
                 // trigger computer's attack in response
-                console.log(humanBoardController);
                 computerMoves.pickRandomCell(humanBoardController);
 
             })
@@ -207,7 +204,6 @@ export const dialogueController = function() {
     function sunkShipMessage(ship, name) {
         const textBox1 = document.querySelector('.text-box1');
         const textBox2 = document.querySelector('.text-box2');
-        console.log(ship, name)
         if (name !== 'Enemy') {
             textBox2.textContent = `Your ${ship.name} has been sunk!!`
         } else if (name === 'Enemy') {

@@ -12,7 +12,6 @@ export class Ship {
 
     hit() {
         this.hits += 1
-        console.log('hit added')
     }
 
     checkIfSunk() {
@@ -20,8 +19,6 @@ export class Ship {
             console.log('Sunk!')
             return true
         } else {
-            console.log(this.length);
-            console.log(this.hits);
             return false
         }
     }
@@ -40,8 +37,6 @@ export function createFleet() {
     const patrolBoat = new Ship(2, 'Patrol Boat');
  
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat)
-
-    console.log(ships);
     return ships
 }
 
@@ -55,7 +50,5 @@ export function createOppFleet() {
     const patrolBoat = new Ship(2, 'Patrol Boat');
 
     ships.push(carrier, battleship, destroyer, submarine, patrolBoat);
-
-    console.log(ships);
     return ships
 }

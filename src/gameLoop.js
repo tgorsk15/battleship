@@ -19,6 +19,7 @@ export const initializeGame = function createGame() {
 
     const AIplayer = new Player('Enemy');
     const computerFleet = createOppFleet();
+    console.log(computerFleet);
     AIplayer.gameBoard = gameBoardController(computerFleet, AIplayer.player);
     const computerBoard = AIplayer.gameBoard;
     computerBoard.createBoard();
@@ -42,7 +43,6 @@ export const initializeGame = function createGame() {
 }
 
 export const resetInterface = function (resetButton) {
-    console.log('reseting all this shit');
     const playerBoards = document.querySelector('.gameboards');
     const dialogueContainer = document.querySelector('.dialogue-container');
     const dialogueBox = document.querySelector('.dialogue-box');

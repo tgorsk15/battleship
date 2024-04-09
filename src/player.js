@@ -10,10 +10,6 @@ export class Player {
 }
 
 
-export const userPlayer = function () {
-
-}
-
 export const computerPlayer = function () {
     const visited = [];
 
@@ -23,7 +19,7 @@ export const computerPlayer = function () {
         const compCoords = [row, column];
 
         const repeatBoolean = checkRepeatCell(compCoords)
-        console.log(repeatBoolean)
+        // console.log(repeatBoolean)
         if (repeatBoolean === true) {
             console.log('computer picked used cell!!')
             pickRandomCell(humanBoard);
@@ -40,7 +36,6 @@ export const computerPlayer = function () {
     function checkRepeatCell(coords) {
         const stringedCoords = JSON.stringify(coords);
         const existsBoolean = visited.some((coord) => JSON.stringify(coord) === stringedCoords)
-        console.log(existsBoolean)
         return existsBoolean
     }
 
